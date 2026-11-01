@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lindner Architekturberatung – Unabhängige Beratung für Bauherren</title>
+<meta name="description" content="Unabhängige Architekturberatung für Bauherren, Eigentümer und Investoren: Bauherrenberatung, Machbarkeitsstudien, Projektbegleitung und Vergabeprüfung. Neutral und ohne Eigeninteresse an der Ausführung.">
+<meta name="theme-color" content="#2a2829">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lindner Architekturberatung">
+<meta property="og:description" content="Beraten, bevor gebaut wird. Unabhängige Architekturberatung von der ersten Idee bis zur Übergabe.">
+<meta property="og:image" content="hero_blueprint.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d10000'/%3E%3Cpath d='M11 7v18h13' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="preload" as="image" href="hero_blueprint.webp">
+<style>
+/* ============================================================
+   1  GRUNDSYSTEM  (Teil 1, Abschnitt 2-4)
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+ --bg:#fff; --surface:#f5f4f4; --fg:#2a2829; --strong:#000; --muted:#6a6667; --line:#dcd9da;
+ --accent:#d10000; --accent-dark:#960000; --accent-text:#d10000; --accent-hi:#ff5a5a; --on-accent:#fff;
+ --hero-bg:#2a2829; --hero-fg:#fff; --hero-muted:#cbc7c8; --hero-grid:#373435; --hero-line:#5e5a5b; --hero-surface:#322f30;
+ --top-bg:var(--hero-bg); --top-fg:var(--hero-fg); --top-muted:var(--hero-muted); --top-line:var(--hero-line);
+ --ease:cubic-bezier(.2,.7,.2,1);
+ --font-display:"Poppins","Helvetica Neue",Arial,sans-serif; --font-body:var(--font-display); --font-mono:var(--font-display);
+ --gl:max(16px,env(safe-area-inset-left,0px)); --gr:max(16px,env(safe-area-inset-right,0px));
+ padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+ :root:not([data-theme=light]){--bg:#000;--surface:#161415;--fg:#e9e7e7;--strong:#fff;--muted:#a29d9e;--line:#2f2c2d;--accent-text:#ff5a5a;color-scheme:dark}
+}
+:root[data-theme=dark]{--bg:#000;--surface:#161415;--fg:#e9e7e7;--strong:#fff;--muted:#a29d9e;--line:#2f2c2d;--accent-text:#ff5a5a;color-scheme:dark}
+
+html.past-hero{--top-bg:var(--bg);--top-fg:var(--strong);--top-muted:var(--muted);--top-line:var(--line)}
+
+.dark{--fg:#fff;--strong:#fff;--muted:var(--hero-muted);--line:var(--hero-line);--surface:var(--hero-surface);
+ --accent-text:var(--accent-hi);background-color:var(--hero-bg);color:var(--fg)}
+
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem;-webkit-text-size-adjust:100%}
+body{margin:0;padding-left:var(--gl);padding-right:var(--gr);overflow-x:hidden;
+ background:var(--bg);color:var(--fg);font:400 16px/1.7 var(--font-body);-webkit-font-smoothing:antialiased}
+
+/* Statusleisten-Streifen (iOS) in Headerfarbe */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;
+ background:var(--top-bg);transition:background .35s var(--ease)}
+
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+img{max-width:100%}
+a{color:inherit}
+
+h1{font-size:clamp(2.3rem,6.2vw,4.7rem);font-weight:700;letter-spacing:-.035em;line-height:1.06;max-width:13ch}
+
+.mono{font:500 .72rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+b,strong{font-weight:600}
+.num{font-variant-numeric:tabular-nums}
+
+:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
+.hero :focus-visible,.dark :focus-visible,.site-header:not(.past) :focus-visible{outline-color:var(--accent-hi)}
+html.past-hero .site-header :focus-visible{outline-color:var(--accent-text)}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:60;background:var(--accent);color:#fff;padding:.8rem 1.2rem;
+ font:600 .78rem var(--font-body);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.skip:focus{left:var(--gl)}
+
+/* Layout */
+.wrap{width:100%;max-width:1120px;margin-inline:auto}
+.bleed{margin-left:calc(-1 * var(--gl));margin-right:calc(-1 * var(--gr));
+ padding-left:var(--gl);padding-right:var(--gr)}
+
+/* ============================================================
+   2  HEADER  (Teil 1, Abschnitt 5)
+   ============================================================ */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+ background:var(--top-bg);color:var(--top-fg);border-bottom:1px solid var(--top-line);
+ transition:background .35s var(--ease),border-color .35s var(--ease),color .35s var(--ease)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4rem}
+
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-weight:700;font-size:1.02rem;text-decoration:none;color:var(--top-fg)}
+.brand .mark{position:relative;flex:none;width:1.4rem;height:1.4rem;background:var(--accent);transition:transform .5s ease}
+.brand .mark::after{content:"";position:absolute;inset:.32rem;border-left:2px solid #fff;border-bottom:2px solid #fff}
+.brand:hover .mark{transform:rotate(90deg)}
+.brand .sub{font-weight:500;color:var(--top-muted);transition:color .35s var(--ease)}
+
+.nav{display:flex;align-items:center;gap:1.8rem;margin-left:auto}
+.nav a{position:relative;font-size:.9rem;font-weight:500;color:var(--top-muted);text-decoration:none;
+ padding-block:.2rem;transition:color .3s var(--ease)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-.15rem;height:2px;background:var(--accent-hi);
+ transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover,.nav a.active{color:var(--top-fg)}
+.nav a:hover::after,.nav a.active::after{transform:none}
+
+.lang{display:inline-flex;border:1px solid var(--top-line);margin-left:1.6rem;transition:border-color .35s var(--ease)}
+.lang button{font:500 .72rem var(--font-mono);letter-spacing:.1em;padding:.4rem .65rem;cursor:pointer;
+ background:transparent;color:var(--top-muted);border:0;transition:background .3s var(--ease),color .3s var(--ease)}
+.lang button[aria-pressed=true]{background:var(--top-fg);color:var(--top-bg)}
+
+.progress{position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--accent-hi);
+ transform:scaleX(var(--p,0));transform-origin:left}
+
+/* ============================================================
+   3  HERO  (Teil 1, Abschnitt 6)
+   ============================================================ */
+.hero{position:relative;isolation:isolate;overflow-x:clip;
+ background-color:var(--hero-bg);color:var(--hero-fg);
+ --gpos:-1px calc(-1px + var(--sy,0)*0.12px);
+ background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),
+                  linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);
+ background-size:56px 56px;background-position:var(--gpos);
+ padding-top:clamp(3rem,7vw,5.5rem);padding-bottom:clamp(3rem,6vw,5rem)}
+
+.hero::before,.glow::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background-image:linear-gradient(var(--accent-hi) 1px,transparent 1px),
+                  linear-gradient(90deg,var(--accent-hi) 1px,transparent 1px);
+ background-size:56px 56px;background-position:var(--gpos);opacity:.55;
+ -webkit-mask-image:radial-gradient(220px circle at var(--mx,-999px) var(--my,-999px),#000,transparent 72%);
+ mask-image:radial-gradient(220px circle at var(--mx,-999px) var(--my,-999px),#000,transparent 72%)}
+
+.glow{position:relative;isolation:isolate;--gpos:-1px -1px;
+ background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),
+                  linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);
+ background-size:56px 56px;background-position:var(--gpos)}
+.glow::before{opacity:.4}
+
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);
+ gap:2.5rem clamp(1.5rem,3vw,3rem);align-items:end}
+.hero-text{padding-bottom:clamp(1rem,3vw,2.5rem);min-width:0}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.8rem;color:var(--accent-hi)}
+.eyebrow::before{content:"";width:2.2rem;height:1px;background:var(--accent-hi)}
+.hero h1{margin-top:1.1rem}
+.lead{margin-top:1.6rem;font-size:clamp(1rem,1.7vw,1.12rem);max-width:46ch;color:var(--hero-muted)}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.rise{animation:rise 1s var(--ease) both;animation-delay:calc(var(--d,0)*1ms)}
+
+.blueprint{min-width:0;align-self:end}
+.plan{display:block;width:100%;height:auto;opacity:var(--po,.8);user-select:none;pointer-events:none;
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 26%,#000 78%,transparent 100%),
+                    linear-gradient(to right,transparent 0,#000 20%,#000 76%,transparent 100%);
+ -webkit-mask-composite:source-in;
+ mask-image:linear-gradient(to bottom,transparent 0,#000 26%,#000 78%,transparent 100%),
+            linear-gradient(to right,transparent 0,#000 20%,#000 76%,transparent 100%);
+ mask-composite:intersect;
+ animation:planin 1.8s var(--ease) .5s both}
+@keyframes planin{from{opacity:0;transform:scale(1.05);filter:blur(6px)}to{opacity:var(--po,.8);transform:none;filter:blur(0)}}
+@media(min-width:901px){.plan{max-height:360px;width:auto;max-width:100%;margin-left:auto}}
+.par{transform:translateY(calc(var(--sy,0)*-0.06px))}
+
+/* Planstempel */
+.titleblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ margin-top:clamp(2.5rem,5vw,4rem);border:1px solid var(--hero-line);background:transparent}
+.titleblock div{padding:.9rem 1.1rem 1rem;border-left:1px solid var(--hero-line);min-width:0}
+.titleblock div:first-child{border-left:0}
+.titleblock .mono{color:var(--hero-muted)}
+.titleblock b{display:block;font-weight:500;font-size:.93rem;margin-top:.2rem;overflow-wrap:anywhere}
+
+/* ============================================================
+   4  BUTTONS  (Teil 1, Abschnitt 7)
+   ============================================================ */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;
+ justify-content:space-between;gap:1.2rem;min-height:3.5rem;padding:0 1.5rem;text-decoration:none;cursor:pointer;
+ font:600 .78rem var(--font-body);letter-spacing:.12em;text-transform:uppercase;
+ border:1px solid var(--accent);transition:color .4s var(--ease),border-color .4s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateX(-101%);transition:transform .55s var(--ease)}
+.btn::after{content:"";flex:none;width:1.5rem;height:.75rem;background:currentColor;
+ -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'><path d='M0 6h22M17 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.5'/></svg>") center/contain no-repeat;
+ mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'><path d='M0 6h22M17 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.5'/></svg>") center/contain no-repeat;
+ transition:transform .45s var(--ease)}
+.btn:hover::before{transform:none}
+.btn:hover::after{transform:translateX(6px)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary::before{background:var(--accent-dark)}
+.btn.primary:hover{border-color:var(--accent-dark)}
+.btn.ghost{background:transparent;color:var(--hero-fg);border-color:var(--hero-muted)}
+.btn.ghost::before{background:var(--hero-fg)}
+.btn.ghost:hover{color:var(--hero-bg);border-color:var(--hero-fg)}
+
+/* ============================================================
+   5  SEKTIONSRASTER  (Teil 2, Abschnitt 8)
+   ============================================================ */
+section.sheet{padding-block:clamp(4rem,9vw,7.5rem);border-bottom:1px solid var(--line)}
+.sheet .wrap{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:2rem clamp(1.5rem,5vw,4rem)}
+.sheet .wrap>.mono{position:sticky;top:calc(env(safe-area-inset-top,0px) + 6rem);align-self:start;
+ display:inline-flex;align-items:center;gap:.7rem}
+.sheet .wrap>.mono::before{content:"";width:1.6rem;height:2px;background:var(--accent-text)}
+.sheet h2{font-size:clamp(2rem,4.4vw,3.3rem);font-weight:600;max-width:18ch}
+.sheet .body{display:flex;flex-direction:column;gap:3rem;min-width:0}
+
+.js .sheet h2{clip-path:inset(0 0 100% 0);transform:translateY(.45em);
+ transition:clip-path 1.1s var(--ease),transform 1.1s var(--ease)}
+.js .sheet h2.seen{clip-path:inset(-.25em -.1em -.25em -.1em);transform:none}
+
+.facts,.services{position:relative}
+.facts::before,.services::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--strong);
+ transform-origin:left;transition:transform 1.5s var(--ease)}
+.js .facts::before,.js .services::before{transform:scaleX(0)}
+.js .facts.seen::before,.js .services.seen::before{transform:none}
+
+.note{font-size:.85rem;color:var(--muted)}
+
+/* ============================================================
+   6  ÜBER MICH  (Teil 2, Abschnitt 9)
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:2.5rem;align-items:start}
+.about-text{display:flex;flex-direction:column;gap:1.2rem;max-width:60ch}
+.about-text p:first-child{font-size:1.12rem;color:var(--strong)}
+.about-text p+p{color:var(--muted)}
+
+.portrait{position:relative;aspect-ratio:4/5;border:1px solid var(--line);background:var(--surface);
+ display:flex;align-items:flex-end;padding:.9rem;translate:0 calc(var(--ty,0)*1px)}
+.portrait::before,.portrait::after{content:"";position:absolute;width:1.6rem;height:1.6rem;
+ border:2px solid var(--accent-text);pointer-events:none}
+.portrait::before{top:-7px;left:-7px;border-right:0;border-bottom:0}
+.portrait::after{bottom:-7px;right:-7px;border-left:0;border-top:0}
+.portrait svg{position:absolute;inset:0;width:100%;height:100%}
+.portrait .mono{position:relative;z-index:1}
+
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.facts>div{padding:1.2rem 1rem 0 0;min-width:0}
+.facts b{display:block;font-weight:600;font-size:clamp(2rem,4.4vw,3.1rem);letter-spacing:-.035em;line-height:1.1;
+ font-variant-numeric:tabular-nums;color:var(--accent-text)}
+.facts span{display:block;font-size:.88rem;color:var(--muted)}
+
+/* ============================================================
+   7  LEISTUNGEN  (Teil 2, Abschnitt 10)
+   ============================================================ */
+.services{list-style:none;margin:0;padding:0}
+.services li{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) 2.2rem;
+ gap:.4rem 2rem;padding:1.9rem 1.2rem;border-bottom:1px solid var(--line);
+ transition:background .5s var(--ease),opacity .5s var(--ease)}
+.services li::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--accent);
+ transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.services li::after{content:"";align-self:center;justify-self:end;width:1.6rem;height:.8rem;background:var(--accent-text);
+ -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'><path d='M0 6h22M17 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.5'/></svg>") center/contain no-repeat;
+ mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'><path d='M0 6h22M17 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.5'/></svg>") center/contain no-repeat;
+ opacity:0;transform:translateX(-14px);transition:opacity .4s var(--ease),transform .55s var(--ease)}
+.services h3{font-size:1.28rem;letter-spacing:-.015em}
+.services p{color:var(--muted);transition:color .4s var(--ease)}
+@media(hover:hover){
+ .services:hover li:not(:hover){opacity:.5}
+ .services li:hover{background:var(--surface)}
+ .services li:hover::before{transform:scaleX(1)}
+ .services li:hover::after{opacity:1;transform:none}
+ .services li:hover p{color:var(--fg)}
+}
+
+/* ============================================================
+   8  PORTFOLIO  (Teil 2, Abschnitt 11)
+   ============================================================ */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem 2rem}
+@media(min-width:681px){.projects>.project:nth-child(even){margin-top:3.5rem}}
+.project{display:flex;flex-direction:column;gap:.9rem;min-width:0;translate:0 calc(var(--ty,0)*1px)}
+.drawing{position:relative;overflow:hidden;aspect-ratio:8/5;background:var(--surface);
+ border:1px solid var(--line);color:var(--strong);transition:border-color .3s}
+.drawing svg{display:block;width:100%;height:100%;transition:transform .9s var(--ease)}
+.drawing::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent-hi);
+ transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.project .meta{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem}
+.project h3{font-size:1.28rem;transition:color .3s var(--ease)}
+.project p{font-size:.96rem;color:var(--muted)}
+@media(hover:hover){
+ .project:hover .drawing{border-color:var(--accent-hi)}
+ .project:hover .drawing svg{transform:scale(1.06)}
+ .project:hover .drawing::after{transform:scaleX(1)}
+ .project:hover h3{color:var(--accent-hi)}
+}
+.js .project .drawing{clip-path:inset(0 100% 0 0);transition:clip-path 1.3s var(--ease) .2s,border-color .3s}
+.js .project.seen .drawing{clip-path:inset(0)}
+
+/* ============================================================
+   9  ARBEITSWEISE  (Teil 2, Abschnitt 12)
+   ============================================================ */
+.steps{position:relative;list-style:none;margin:0;padding:0;
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);counter-reset:step}
+.steps::before{content:"";position:absolute;left:0;right:0;top:-1px;height:3px;background:var(--accent);
+ transform-origin:left;transform:scaleX(var(--sp,0))}
+.steps li{padding:1.4rem 1.4rem .4rem 0;counter-increment:step;display:flex;flex-direction:column;gap:.55rem}
+.steps li::before{content:"Phase " counter(step);font:500 .72rem var(--font-mono);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--accent-text)}
+html[lang=en] .steps li::before{content:"Stage " counter(step)}
+.steps h3{font-size:1.18rem;transition:color .3s}
+.steps p{color:var(--muted);font-size:.95rem}
+@media(hover:hover){.steps li:hover h3{color:var(--accent-text)}}
+
+/* ============================================================
+   10  KONTAKT  (Teil 3, Abschnitt 13)
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:3rem}
+form{display:flex;flex-direction:column;gap:1.4rem;min-width:0}
+.field{display:flex;flex-direction:column;gap:.2rem}
+.field label{font:500 .72rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+ transition:color .25s}
+.field:focus-within label{color:var(--accent-text)}
+input,select,textarea{font:400 1rem var(--font-body);color:var(--fg);background:transparent;border:0;
+ border-bottom:1px solid var(--line);border-radius:0;padding:.7rem 0;width:100%;
+ transition:border-color .25s,box-shadow .25s}
+select option{color:#2a2829;background:#fff}
+input:hover,select:hover,textarea:hover{border-bottom-color:var(--muted)}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent);box-shadow:0 1px 0 0 var(--accent)}
+textarea{min-height:8rem;resize:vertical}
+.check{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+.check input{width:1.1rem;height:1.1rem;margin-top:.25rem;padding:0;accent-color:var(--accent);flex:none;border-bottom:0}
+.check a{color:var(--accent-text)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
+form .btn{align-self:start}
+.form-error{font-size:.85rem;color:var(--accent-text)}
+.form-error:empty{display:none}
+
+.result{border:1px solid var(--accent);background:var(--surface);padding:1.3rem;
+ display:flex;flex-direction:column;gap:.8rem}
+.result[hidden]{display:none}
+.result h3{font-size:1.15rem}
+.result pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:400 .88rem/1.6 var(--font-body);color:var(--muted)}
+.result-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+
+.details{display:flex;flex-direction:column;gap:1.4rem;margin:0}
+.details dt{margin-bottom:.2rem}
+.details dd{margin:0;font-size:1.05rem;color:var(--strong);overflow-wrap:anywhere}
+.copy-line{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.copy-btn{font:500 .7rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;padding:.3rem .65rem;
+ border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;
+ transition:color .25s,border-color .25s,background .25s}
+.copy-btn:hover{color:var(--on-accent);background:var(--accent);border-color:var(--accent)}
+.status{font:500 .72rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text)}
+
+/* ============================================================
+   11  FOOTER  (Teil 3, Abschnitt 14)
+   ============================================================ */
+.foot{padding-top:clamp(3.5rem,7vw,5.5rem);padding-bottom:2rem}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.foot .brand{color:var(--hero-fg)}
+.foot .brand .sub{color:var(--hero-muted)}
+.claim{margin-top:1.4rem;font-size:clamp(1.5rem,3.4vw,2.4rem);font-weight:600;letter-spacing:-.025em;
+ line-height:1.15;max-width:18ch;text-wrap:balance}
+.totop{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--hero-fg);
+ border:1px solid var(--hero-line);padding:.8rem 1.2rem;font-weight:500;font-size:.9rem;
+ transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.totop span{transition:transform .35s var(--ease)}
+.totop:hover{background:var(--hero-fg);border-color:var(--hero-fg);color:var(--hero-bg)}
+.totop:hover span{transform:translateY(-4px)}
+.foot-legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem 2rem;margin-top:3rem;
+ padding-top:1.2rem;border-top:1px solid var(--hero-line)}
+.foot-legal a{color:inherit}
+
+/* Rechtstexte */
+.legal h2{max-width:none}
+.legal-body{display:flex;flex-direction:column;gap:1rem;max-width:70ch}
+.legal-body h3{font-size:1.1rem;margin-top:.8rem}
+.legal-body p{color:var(--muted);font-size:.95rem}
+
+/* ============================================================
+   12  REVEAL  (Teil 3, Abschnitt 15.5)
+   ============================================================ */
+.js .reveal{opacity:0;transform:translateY(28px);
+ transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   13  RESPONSIVE  (Teil 3, Abschnitt 17)
+   ============================================================ */
+@media(max-width:960px){
+ .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+ .hero{position:relative;overflow:hidden}
+ .hero-grid{grid-template-columns:minmax(0,1fr)}
+ .hero-text{padding-bottom:0}
+ .blueprint{position:absolute;top:7rem;left:0;right:0;z-index:-1;pointer-events:none;--po:.3}
+ .plan{width:125%;margin-left:-2%}
+ .par{transform:none}
+}
+@media(max-width:860px){
+ .sheet .wrap{grid-template-columns:minmax(0,1fr);gap:1.2rem}
+ .sheet .wrap>.mono{position:static}
+ .about-grid{grid-template-columns:minmax(0,1fr)}
+ .portrait{max-width:260px}
+ .contact-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:760px){
+ .nav{display:none}
+ .titleblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .titleblock div:nth-child(3){border-left:0}
+ .titleblock div:nth-child(n+3){border-top:1px solid var(--hero-line)}
+}
+@media(max-width:680px){
+ .services li{grid-template-columns:minmax(0,1fr)}
+ .services li::after{display:none}
+ .projects{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:560px){
+ .cta-row .btn{width:100%}
+ .row2{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:520px){
+ .steps{grid-template-columns:minmax(0,1fr)}
+ .steps li{border-bottom:1px solid var(--line);padding-bottom:1.1rem}
+}
+@media(max-width:480px){
+ .facts{grid-template-columns:minmax(0,1fr)}
+ .facts>div{border-bottom:1px solid var(--line);padding-bottom:.9rem}
+ .brand .sub{display:none}
+}
+
+/* ============================================================
+   14  REDUCED MOTION  (Teil 3, Abschnitt 16)
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation:none!important}
+ .js .reveal{opacity:1;transform:none}
+}
+
+@media print{
+ body{padding:0;color:#000;background:#fff}
+ .site-header,.hero::before,.glow::before,.blueprint,.totop,.lang,.progress{display:none!important}
+ .dark{background:#fff!important;color:#000!important;--fg:#000;--strong:#000;--muted:#333;--line:#999;--accent-text:#000}
+ .sheet{padding-block:1.5rem;break-inside:avoid}
+}
+</style>
+</head>
+
+<body id="top">
+<a class="skip" href="#main" data-i18n="skip">Zum Inhalt springen</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark" aria-hidden="true"></span>
+      <span>Lindner <span class="sub" data-i18n="brand_sub">Architekturberatung</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation" data-i18n-aria="nav_label">
+      <a href="#ueber" data-i18n="nav_about">Über mich</a>
+      <a href="#leistungen" data-i18n="nav_services">Leistungen</a>
+      <a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a>
+      <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Sprache / Language">
+      <button type="button" data-lang="de" lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero bleed">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="mono eyebrow rise" style="--d:100" data-i18n="hero_eyebrow">Unabhängige Architekturberatung</p>
+        <h1 class="rise" style="--d:220" data-i18n="hero_title">Beraten, bevor gebaut wird.</h1>
+        <p class="lead rise" style="--d:360" data-i18n="hero_lead">Ich begleite Bauherren, Eigentümer und Investoren von der ersten Idee bis zur Übergabe. Neutral, fachlich fundiert und ohne Eigeninteresse an der Ausführung.</p>
+        <div class="cta-row rise" style="--d:500">
+          <a class="btn primary" href="#kontakt" data-i18n="hero_cta1">Erstgespräch anfragen</a>
+          <a class="btn ghost" href="#portfolio" data-i18n="hero_cta2">Projekte ansehen</a>
+        </div>
+      </div>
+      <div class="blueprint rise" style="--d:300">
+        <div class="par">
+          <img class="plan" src="hero_blueprint.webp" width="1200" height="730" alt="" aria-hidden="true" decoding="async">
+        </div>
+      </div>
+      <div class="titleblock rise" style="--d:650;grid-column:1/-1">
+        <div><span class="mono" data-i18n="tb1_l">Tätigkeit</span><b data-i18n="tb1_v">Architekt · Bauherrenberater</b></div>
+        <div><span class="mono" data-i18n="tb2_l">Region</span><b data-i18n="tb2_v">Deutschland · DACH</b></div>
+        <div><span class="mono" data-i18n="tb3_l">Leistungsbild</span><b data-i18n="tb3_v">Leistungsphasen 1–9 (HOAI)</b></div>
+        <div><span class="mono" data-i18n="tb4_l">Sprachen</span><b data-i18n="tb4_v">DE · EN</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ÜBER MICH ===================== -->
+  <section class="sheet" id="ueber">
+    <div class="wrap">
+      <p class="mono" data-i18n="about_label">Über mich</p>
+      <div class="body">
+        <h2 data-i18n="about_title">Ein klarer Blick auf Ihr Bauvorhaben.</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p data-i18n="about_p1">Ich bin freiberuflicher Architekt und arbeite seit über 15 Jahren in Planung, Bauleitung und Projektsteuerung. Heute berate ich Auftraggeber, die vor Entscheidungen stehen: Kaufen oder bauen, sanieren oder ersetzen, welcher Entwurf trägt.</p>
+            <p data-i18n="about_p2">Weil ich nicht selbst plane und nicht baue, ist meine Empfehlung frei von Eigeninteresse. Ich übersetze zwischen Bauherr, Planungsteam und Behörden und halte Kosten, Termine und Qualität im Blick.</p>
+          </div>
+          <div class="portrait" role="img" aria-label="Platzhalter für ein Porträtfoto" data-i18n-aria="portrait_alt">
+            <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="var(--line)" stroke-width="1">
+              <path d="M0 300H300M0 330H300M60 0V375M120 0V375M180 0V375M240 0V375"/>
+              <circle cx="150" cy="140" r="52" stroke="var(--muted)"/>
+              <path d="M62 300C62 235 100 205 150 205C200 205 238 235 238 300" stroke="var(--muted)"/>
+            </g></svg>
+            <span class="mono" data-i18n="portrait_cap">Porträt · Platzhalter</span>
+          </div>
+        </div>
+        <div class="facts">
+          <div><b data-count="15" data-suffix="+">15+</b><span data-i18n="fact1">Jahre Berufserfahrung</span></div>
+          <div><b data-count="60" data-suffix="+">60+</b><span data-i18n="fact2">begleitete Projekte</span></div>
+          <div><b>1–9</b><span data-i18n="fact3">Leistungsphasen nach HOAI</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEISTUNGEN ===================== -->
+  <section class="sheet" id="leistungen">
+    <div class="wrap">
+      <p class="mono" data-i18n="serv_label">Leistungen</p>
+      <div class="body">
+        <h2 data-i18n="serv_title">Beratung entlang des gesamten Bauprozesses.</h2>
+        <ul class="services" role="list">
+          <li><h3 data-i18n="s1_t">Bauherrenberatung</h3><p data-i18n="s1_d">Ich vertrete Ihre Interessen gegenüber Planern, Behörden und Ausführenden und bereite Entscheidungen so auf, dass Sie sie sicher treffen können.</p></li>
+          <li><h3 data-i18n="s2_t">Machbarkeitsstudien</h3><p data-i18n="s2_d">Grundstücks- und Bestandsanalyse, Baurecht, Flächenpotenziale und eine erste Kostenspanne, bevor Sie sich festlegen.</p></li>
+          <li><h3 data-i18n="s3_t">Projektbegleitung</h3><p data-i18n="s3_d">Steuerung von Terminen, Kosten und Qualität in allen Leistungsphasen, mit klarer Dokumentation und regelmäßigen Berichten.</p></li>
+          <li><h3 data-i18n="s4_t">Bestand und Sanierung</h3><p data-i18n="s4_d">Zustandsbewertung, Sanierungskonzepte und Variantenvergleiche für Wohn- und Gewerbebauten, inklusive energetischer Einordnung.</p></li>
+          <li><h3 data-i18n="s5_t">Planungs- und Vergabeprüfung</h3><p data-i18n="s5_d">Unabhängige Prüfung von Entwürfen, Leistungsverzeichnissen, Angeboten und Verträgen, bevor Kosten entstehen.</p></li>
+          <li><h3 data-i18n="s6_t">Genehmigungsstrategie</h3><p data-i18n="s6_d">Bauvoranfrage, Abstimmung mit Bauamt und Fachbehörden und ein belastbarer Weg zur Genehmigung.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PORTFOLIO ===================== -->
+  <section class="sheet dark glow bleed" id="portfolio">
+    <div class="wrap">
+      <p class="mono" data-i18n="port_label">Portfolio</p>
+      <div class="body">
+        <h2 data-i18n="port_title">Ausgewählte Projekte.</h2>
+        <div class="projects">
+
+          <article class="project">
+            <div class="drawing" role="img" aria-label="Grundriss eines Wohnhauses" data-i18n-aria="p1_alt">
+              <svg viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <rect x="50" y="28" width="220" height="130"/><path d="M50 92H160M160 28V158M160 110H270"/>
+                <path d="M120 92a16 16 0 0 1 16 16" stroke-width=".8"/><path d="M160 70a16 16 0 0 1 16-16" stroke-width=".8"/>
+                <path d="M50 176H270M50 170V182M270 170V182" stroke-width=".8" stroke="var(--accent-text)"/>
+                <text x="160" y="193" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="var(--accent-text)" stroke="none">11,00</text>
+              </svg>
+            </div>
+            <p class="mono meta"><time datetime="2025">2025</time><span data-i18n="p1_type">Wohnbau</span><span data-i18n="p1_size">320 m² BGF</span></p>
+            <h3 data-i18n="p1_t">Aufstockung Stadthaus, Stuttgart</h3>
+            <p data-i18n="p1_d">Variantenstudie und Bauherrenberatung für zwei zusätzliche Geschosse in Holzbauweise. Genehmigung nach Bauvoranfrage.</p>
+          </article>
+
+          <article class="project">
+            <div class="drawing" role="img" aria-label="Stützenraster einer Halle" data-i18n-aria="p2_alt">
+              <svg viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <rect x="40" y="36" width="240" height="120"/>
+                <g stroke-dasharray="5 4" stroke-width=".7" stroke="var(--accent-text)"><path d="M100 22V170M160 22V170M220 22V170M26 76H294M26 116H294"/></g>
+                <g fill="currentColor" stroke="none"><rect x="96" y="72" width="8" height="8"/><rect x="156" y="72" width="8" height="8"/><rect x="216" y="72" width="8" height="8"/><rect x="96" y="112" width="8" height="8"/><rect x="156" y="112" width="8" height="8"/><rect x="216" y="112" width="8" height="8"/></g>
+                <g font-family="Poppins,sans-serif" font-size="8" fill="currentColor" stroke="none" text-anchor="middle"><text x="100" y="16">A</text><text x="160" y="16">B</text><text x="220" y="16">C</text><text x="16" y="79">1</text><text x="16" y="119">2</text></g>
+              </svg>
+            </div>
+            <p class="mono meta"><time datetime="2024">2024</time><span data-i18n="p2_type">Umnutzung</span><span data-i18n="p2_size">1.850 m²</span></p>
+            <h3 data-i18n="p2_t">Gewerbehalle zu Büro, Karlsruhe</h3>
+            <p data-i18n="p2_d">Bestandsbewertung, Nutzungskonzept und Prüfung der Ausschreibung für den Umbau einer Lagerhalle.</p>
+          </article>
+
+          <article class="project">
+            <div class="drawing" role="img" aria-label="Lageplan eines Quartiers" data-i18n-aria="p3_alt">
+              <svg viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <path d="M30 30H290V170H30Z" stroke-dasharray="6 4" stroke-width=".8"/>
+                <rect x="52" y="50" width="70" height="30"/><rect x="140" y="50" width="40" height="30"/><rect x="198" y="50" width="70" height="46"/>
+                <rect x="52" y="104" width="46" height="46"/><rect x="116" y="104" width="64" height="24"/><rect x="198" y="116" width="70" height="34"/>
+                <path d="M30 92H290" stroke-dasharray="2 4" stroke-width=".7"/>
+                <path d="M296 24l5 14h-10z" fill="var(--accent-text)" stroke="none"/>
+              </svg>
+            </div>
+            <p class="mono meta"><time datetime="2023">2023</time><span data-i18n="p3_type">Quartier</span><span data-i18n="p3_size">2,4 ha</span></p>
+            <h3 data-i18n="p3_t">Machbarkeitsstudie Quartier, Freiburg</h3>
+            <p data-i18n="p3_d">Dichte- und Erschließungsvarianten für ein Wohnquartier, abgestimmt mit Stadtplanungsamt und Investor.</p>
+          </article>
+
+          <article class="project">
+            <div class="drawing" role="img" aria-label="Schnitt eines Kita-Neubaus" data-i18n-aria="p4_alt">
+              <svg viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <path d="M20 160H300" stroke-width="2"/><path d="M60 160V80L160 40L260 80V160"/><path d="M60 120H260" stroke-width=".8"/>
+                <rect x="86" y="92" width="26" height="18"/><rect x="146" y="92" width="26" height="18"/><rect x="206" y="92" width="26" height="18"/>
+                <rect x="86" y="132" width="26" height="28"/><rect x="206" y="132" width="26" height="28"/>
+                <path d="M274 160V80M270 80h8M270 160h8" stroke-width=".8" stroke="var(--accent-text)"/>
+              </svg>
+            </div>
+            <p class="mono meta"><time datetime="2026">2026</time><span data-i18n="p4_type">Neubau</span><span data-i18n="p4_size">in Bau</span></p>
+            <h3 data-i18n="p4_t">Kita-Neubau, Frankfurt</h3>
+            <p data-i18n="p4_d">Projektbegleitung in den Leistungsphasen 5 bis 8 mit Terminplanung, Kostenkontrolle und Abnahmebegleitung.</p>
+          </article>
+
+        </div>
+        <p class="note" data-i18n="port_note">Die Projekte auf dieser Seite sind Beispielinhalte und werden durch echte Referenzen ersetzt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ARBEITSWEISE ===================== -->
+  <section class="sheet" id="arbeitsweise">
+    <div class="wrap">
+      <p class="mono" data-i18n="proc_label">Arbeitsweise</p>
+      <div class="body">
+        <h2 data-i18n="proc_title">Vier Schritte, ein fester Ansprechpartner.</h2>
+        <ol class="steps" role="list">
+          <li><h3 data-i18n="st1_t">Erstgespräch</h3><p data-i18n="st1_d">Wir klären Ziel, Budget und Rahmen. Das erste Gespräch ist unverbindlich.</p></li>
+          <li><h3 data-i18n="st2_t">Analyse</h3><p data-i18n="st2_d">Ich prüfe Grundstück, Bestand, Unterlagen und Baurecht und benenne Chancen und Risiken.</p></li>
+          <li><h3 data-i18n="st3_t">Empfehlung</h3><p data-i18n="st3_d">Sie erhalten eine nachvollziehbare Empfehlung mit Varianten, Kostenspannen und Terminen.</p></li>
+          <li><h3 data-i18n="st4_t">Begleitung</h3><p data-i18n="st4_d">Auf Wunsch begleite ich die Umsetzung bis zur Übergabe und vertrete Ihre Interessen vor Ort.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAKT ===================== -->
+  <section class="sheet" id="kontakt">
+    <div class="wrap">
+      <p class="mono" data-i18n="cont_label">Kontakt</p>
+      <div class="body">
+        <h2 data-i18n="cont_title">Schildern Sie mir Ihr Vorhaben.</h2>
+        <div class="contact-grid">
+
+          <form id="contact-form" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="f-name" data-i18n="f_name">Name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="f-mail" data-i18n="f_mail">E-Mail</label>
+                <input id="f-mail" name="email" type="email" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-topic" data-i18n="f_topic">Anliegen</label>
+              <select id="f-topic" name="topic">
+                <option value="bauherrenberatung" data-i18n="o1">Bauherrenberatung</option>
+                <option value="machbarkeitsstudie" data-i18n="o2">Machbarkeitsstudie</option>
+                <option value="projektbegleitung" data-i18n="o3">Projektbegleitung</option>
+                <option value="bestand-sanierung" data-i18n="o4">Bestand und Sanierung</option>
+                <option value="vergabepruefung" data-i18n="o5">Planungs- und Vergabeprüfung</option>
+                <option value="anderes" data-i18n="o6">Anderes</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg" data-i18n="f_msg">Nachricht</label>
+              <textarea id="f-msg" name="message" required></textarea>
+            </div>
+            <label class="check">
+              <input type="checkbox" id="f-consent" name="consent" required>
+              <span><span data-i18n="f_consent">Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden.</span> <a href="#datenschutz" data-i18n="legal_privacy">Datenschutz</a></span>
+            </label>
+            <button class="btn primary" type="submit" data-i18n="f_send">Anfrage vorbereiten</button>
+            <p class="form-error" id="form-error" role="alert"></p>
+          </form>
+
+          <div>
+            <dl class="details">
+              <div>
+                <dt class="mono" data-i18n="d_mail">E-Mail</dt>
+                <dd class="copy-line"><a href="mailto:kontakt@beispiel.de" id="mail-value">kontakt@beispiel.de</a>
+                  <button type="button" class="copy-btn" data-copy="#mail-value" data-i18n="copy">Kopieren</button></dd>
+              </div>
+              <div>
+                <dt class="mono" data-i18n="d_phone">Telefon</dt>
+                <dd class="copy-line"><a href="tel:+490000000000" id="tel-value">+49 000 0000000</a>
+                  <button type="button" class="copy-btn" data-copy="#tel-value" data-i18n="copy">Kopieren</button></dd>
+              </div>
+              <div>
+                <dt class="mono" data-i18n="d_place">Standort</dt>
+                <dd data-i18n="d_place_v">Musterstraße 1, 00000 Musterstadt</dd>
+              </div>
+              <div>
+                <dt class="mono" data-i18n="d_hours">Erreichbar</dt>
+                <dd data-i18n="d_hours_v">Mo–Fr, 9–17 Uhr</dd>
+              </div>
+            </dl>
+          </div>
+
+        </div>
+
+        <div class="result" id="result" hidden>
+          <h3 data-i18n="res_title">Ihre Nachricht ist vorbereitet.</h3>
+          <p class="note" data-i18n="res_hint">Diese Seite versendet Formulare nicht selbst. Kopieren Sie den Text und schicken Sie ihn an die E-Mail-Adresse oben.</p>
+          <pre id="result-text"></pre>
+          <div class="result-actions">
+            <button type="button" class="copy-btn" id="result-copy" data-i18n="res_copy">Text kopieren</button>
+            <span class="status" id="result-status" aria-live="polite"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RECHTLICHES ===================== -->
+  <section class="sheet legal" id="impressum">
+    <div class="wrap">
+      <p class="mono" data-i18n="imp_label">Impressum</p>
+      <div class="body">
+        <h2 data-i18n="imp_title">Angaben gemäß § 5 DDG.</h2>
+        <div class="legal-body">
+          <p data-i18n="imp_p1">Lindner Architekturberatung, Musterstraße 1, 00000 Musterstadt, Deutschland. Telefon +49 000 0000000, kontakt@beispiel.de.</p>
+          <p data-i18n="imp_p2">Berufsbezeichnung: Architekt, verliehen in Deutschland. Mitglied der Architektenkammer Baden-Württemberg, Eintragungsnummer 00000. Zuständige Aufsichtsbehörde: Architektenkammer Baden-Württemberg, Danneckerstraße 54, 70182 Stuttgart.</p>
+          <p data-i18n="imp_p3">Berufshaftpflichtversicherung: Musterversicherung AG, Musterstadt. Räumlicher Geltungsbereich: Europäische Union. Umsatzsteuer-Identifikationsnummer: DE000000000.</p>
+          <p class="note" data-i18n="imp_note">Platzhalter: Alle Angaben sind vor der Veröffentlichung durch die echten Daten zu ersetzen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet legal" id="datenschutz">
+    <div class="wrap">
+      <p class="mono" data-i18n="dsg_label">Datenschutz</p>
+      <div class="body">
+        <h2 data-i18n="dsg_title">Umgang mit Ihren Daten.</h2>
+        <div class="legal-body">
+          <h3 data-i18n="dsg_h1">Kontaktformular</h3>
+          <p data-i18n="dsg_p1">Das Formular auf dieser Seite überträgt keine Daten an einen Server. Ihre Eingaben bleiben im Browser und werden lediglich zu einem Text zusammengestellt, den Sie selbst kopieren und per E-Mail versenden.</p>
+          <h3 data-i18n="dsg_h2">Schriftart</h3>
+          <p data-i18n="dsg_p2">Diese Seite lädt die Schriftart Poppins von Google Fonts. Dabei wird Ihre IP-Adresse an Google übertragen. Für den Produktivbetrieb empfiehlt sich das Einbinden der Schriftdateien vom eigenen Server.</p>
+          <h3 data-i18n="dsg_h3">Lokale Speicherung</h3>
+          <p data-i18n="dsg_p3">Die gewählte Sprache wird im lokalen Speicher Ihres Browsers abgelegt, damit sie beim nächsten Besuch erhalten bleibt. Es werden keine Cookies zu Analysezwecken gesetzt.</p>
+          <p class="note" data-i18n="dsg_note">Platzhalter: Diese Hinweise sind vor der Veröffentlichung rechtlich zu prüfen und zu vervollständigen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot dark glow bleed">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top">
+          <span class="mark" aria-hidden="true"></span>
+          <span>Lindner <span class="sub" data-i18n="brand_sub">Architekturberatung</span></span>
+        </a>
+        <p class="claim" data-i18n="foot_tag">Sprechen wir über Ihr Vorhaben.</p>
+      </div>
+      <a class="totop" href="#top"><span aria-hidden="true">↑</span><span data-i18n="totop">Nach oben</span></a>
+    </div>
+    <div class="foot-legal mono">
+      <span data-i18n="foot_copy">© 2026 Lindner Architekturberatung</span>
+      <span><a href="#impressum" data-i18n="legal_imprint">Impressum</a> · <a href="#datenschutz" data-i18n="legal_privacy">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Lindner Architekturberatung",
+"description":"Unabhängige Architekturberatung für Bauherren, Eigentümer und Investoren.",
+"areaServed":"DE","availableLanguage":["de","en"],
+"address":{"@type":"PostalAddress","streetAddress":"Musterstraße 1","postalCode":"00000","addressLocality":"Musterstadt","addressCountry":"DE"},
+"email":"kontakt@beispiel.de","telephone":"+49 000 0000000",
+"openingHours":"Mo-Fr 09:00-17:00"}
+</script>
+
+<script>
+(function(){
+"use strict";
+
+var root     = document.documentElement,
+    reduce   = matchMedia("(prefers-reduced-motion: reduce)").matches,
+    hasIO    = "IntersectionObserver" in window,
+    canHover = matchMedia("(hover: hover)").matches;
+
+if(!reduce && hasIO) root.classList.add("js");
+
+var header = document.querySelector(".site-header"),
+    hero   = document.querySelector(".hero"),
+    steps  = document.querySelector(".steps"),
+    themeMeta = document.querySelector('meta[name="theme-color"]');
+
+function clamp(v,a,b){return v<a?a:(v>b?b:v);}
+
+/* ---------------------------------------------- 1  Scroll-Handler */
+var ticking = false, pItems = [], parallaxOn = false;
+
+function schedule(){ if(!ticking){ ticking = true; requestAnimationFrame(frame); } }
+
+function frame(){
+  ticking = false;
+  var y   = window.pageYOffset || root.scrollTop || 0,
+      max = Math.max(1, root.scrollHeight - window.innerHeight);
+
+  if(header) header.style.setProperty("--p", Math.min(1, y/max).toFixed(4));
+
+  var heroH = hero ? hero.offsetHeight : 0,
+      past  = y > heroH - (header ? header.offsetHeight : 0);
+  root.classList.toggle("past-hero", past);
+  if(themeMeta){
+    var c = past ? (getComputedStyle(root).getPropertyValue("--bg").trim() || "#ffffff") : "#2a2829";
+    if(themeMeta.getAttribute("content") !== c) themeMeta.setAttribute("content", c);
+  }
+
+  if(!reduce && hero) root.style.setProperty("--sy", Math.min(y, heroH));
+
+  stepsProgress();
+  parallax();
+}
+
+/* ---------------------------------------------- 2  Schritte-Linie */
+function stepsProgress(){
+  if(!steps) return;
+  var r = steps.getBoundingClientRect(), vh = window.innerHeight,
+      p = (vh*0.85 - r.top) / (r.height + vh*0.1);
+  steps.style.setProperty("--sp", clamp(p,0,1).toFixed(3));
+}
+
+/* ---------------------------------------------- 3  Parallax */
+function buildParallax(){
+  pItems = [];
+  var portrait = document.querySelector(".portrait");
+  if(portrait) pItems.push({el:portrait, f:0.06, ty:0});
+  Array.prototype.forEach.call(document.querySelectorAll(".project"), function(el,i){
+    pItems.push({el:el, f:(i % 2 === 0 ? 0.05 : -0.035), ty:0});
+  });
+}
+
+function parallax(){
+  if(reduce) return;
+  if(window.innerWidth <= 680){
+    if(parallaxOn){
+      pItems.forEach(function(it){ it.ty = 0; it.el.style.removeProperty("--ty"); });
+      parallaxOn = false;
+    }
+    return;
+  }
+  parallaxOn = true;
+  var vh = window.innerHeight;
+  pItems.forEach(function(it){
+    var r = it.el.getBoundingClientRect();
+    if(r.bottom < -200 || r.top > vh + 200) return;
+    var c = r.top - it.ty + r.height/2 - vh/2;
+    it.ty = clamp(c * it.f, -70, 70);
+    it.el.style.setProperty("--ty", it.ty.toFixed(1));
+  });
+}
+
+/* ---------------------------------------------- 4  Maus-Glow */
+if(!reduce && canHover){
+  Array.prototype.forEach.call(document.querySelectorAll(".hero, .glow"), function(el){
+    el.addEventListener("pointermove", function(e){
+      var r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      el.style.setProperty("--my", (e.clientY - r.top)  + "px");
+    }, {passive:true});
+    el.addEventListener("pointerleave", function(){
+      el.style.setProperty("--mx","-999px");
+      el.style.setProperty("--my","-999px");
+    });
+  });
+}
+
+/* ---------------------------------------------- 5  Scroll-Reveal */
+if(!reduce && hasIO){
+  var sel = [".sheet .wrap > .mono", ".about-text > p", ".portrait", ".facts > div", ".services li",
+             ".project", ".steps li", ".note", "#contact-form", ".details",
+             ".legal-body > *", ".foot-grid > *", ".foot-legal"].join(",");
+
+  var revealIO = new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el = en.target;
+      el.classList.add("in");
+      obs.unobserve(el);
+      setTimeout(function(){
+        el.classList.remove("reveal","in");
+        el.style.removeProperty("--i");
+      }, 1400);
+    });
+  }, {rootMargin:"0px 0px -6% 0px", threshold:.1});
+
+  Array.prototype.forEach.call(document.querySelectorAll(sel), function(el){
+    /* Elemente in der zunaechst verborgenen Ergebnisbox nie clippen */
+    if(el.closest && el.closest("#result")) return;
+    var parent = el.parentElement, idx = 0;
+    if(parent){
+      idx = Array.prototype.indexOf.call(parent.children, el);
+      if(el.classList.contains("project")) idx = idx % 2;
+    }
+    el.classList.add("reveal");
+    el.style.setProperty("--i", Math.min(idx, 4));
+    revealIO.observe(el);
+  });
+
+  /* ------------------------------------------- 6  "seen"-Markierung */
+  var seenIO = new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var t = en.target.__seenTarget || en.target;
+      t.classList.add("seen");
+      obs.unobserve(en.target);
+    });
+  }, {rootMargin:"0px 0px -10% 0px", threshold:.05});
+
+  Array.prototype.forEach.call(document.querySelectorAll(".project, .services, .facts"), function(el){
+    seenIO.observe(el);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".sheet h2"), function(h2){
+    var host = h2.parentElement || h2;
+    host.__seenTarget = h2;
+    seenIO.observe(host);
+  });
+
+  /* ------------------------------------------- 7  Count-up */
+  var facts = document.querySelector(".facts");
+  if(facts){
+    var countIO = new IntersectionObserver(function(entries,obs){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        obs.disconnect();
+        Array.prototype.forEach.call(facts.querySelectorAll("[data-count]"), function(el){
+          var target = parseInt(el.getAttribute("data-count"),10) || 0,
+              suffix = el.getAttribute("data-suffix") || "",
+              dur = 1300, t0 = 0;
+          el.textContent = "0" + suffix;
+          requestAnimationFrame(function step(ts){
+            if(!t0) t0 = ts;
+            var k = Math.min(1, (ts - t0)/dur),
+                e = 1 - Math.pow(1 - k, 3);
+            el.textContent = Math.round(target * e) + suffix;
+            if(k < 1) requestAnimationFrame(step);
+          });
+        });
+      });
+    }, {threshold:.4});
+    countIO.observe(facts);
+  }
+}
+
+/* ---------------------------------------------- 8  Scroll-Spy */
+if(hasIO){
+  var navLinks = {};
+  Array.prototype.forEach.call(document.querySelectorAll(".nav a"), function(a){
+    navLinks[a.getAttribute("href")] = a;
+  });
+  var spyIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var link = navLinks["#" + en.target.id];
+      if(!link) return;
+      Object.keys(navLinks).forEach(function(k){ navLinks[k].classList.remove("active"); });
+      link.classList.add("active");
+    });
+  }, {rootMargin:"-45% 0px -50% 0px"});
+  ["ueber","leistungen","portfolio","kontakt"].forEach(function(id){
+    var s = document.getElementById(id);
+    if(s) spyIO.observe(s);
+  });
+}
+
+/* ---------------------------------------------- 9  Sprachwechsel */
+var T = {
+ /* Texte ohne eigenes Markup-Pendant (Status- und Fehlermeldungen) */
+ de:{
+  err_fill:"Bitte Name, E-Mail und Nachricht ausfüllen und die Einwilligung bestätigen.",
+  err_mail:"Bitte prüfen Sie die E-Mail-Adresse.",
+  copied:"Kopiert", copy_fail:"Bitte manuell kopieren"
+ },
+ en:{
+  skip:"Skip to content", brand_sub:"Architecture Consulting", nav_label:"Navigation",
+  nav_about:"About", nav_services:"Services", nav_portfolio:"Portfolio", nav_contact:"Contact",
+  hero_eyebrow:"Independent architecture consulting",
+  hero_title:"Advice before anything is built.",
+  hero_lead:"I support owners, developers and investors from the first idea to handover. Neutral, technically sound and with no stake in who builds.",
+  hero_cta1:"Request an intro call", hero_cta2:"View projects",
+  tb1_l:"Profession", tb1_v:"Architect · Client advisor",
+  tb2_l:"Region", tb2_v:"Germany · DACH",
+  tb3_l:"Scope", tb3_v:"Work phases 1–9 (HOAI)",
+  tb4_l:"Languages", tb4_v:"DE · EN",
+  about_label:"About", about_title:"A clear view of your building project.",
+  about_p1:"I am a freelance architect with more than 15 years of experience in design, site supervision and project management. Today I advise clients facing decisions: buy or build, renovate or replace, which design holds up.",
+  about_p2:"Because I neither design nor build, my recommendations are free of self-interest. I translate between client, design team and authorities, and keep cost, schedule and quality in view.",
+  portrait_cap:"Portrait · placeholder", portrait_alt:"Placeholder for a portrait photo",
+  fact1:"years of experience", fact2:"projects supported", fact3:"HOAI work phases covered",
+  serv_label:"Services", serv_title:"Advice across the entire building process.",
+  s1_t:"Client advisory", s1_d:"I represent your interests towards designers, authorities and contractors, and prepare decisions so you can make them with confidence.",
+  s2_t:"Feasibility studies", s2_d:"Site and building analysis, planning law, area potential and a first cost range before you commit.",
+  s3_t:"Project support", s3_d:"Control of schedule, cost and quality across all work phases, with clear documentation and regular reports.",
+  s4_t:"Existing buildings and refurbishment", s4_d:"Condition assessment, refurbishment concepts and option comparisons for residential and commercial buildings, including energy performance.",
+  s5_t:"Design and tender review", s5_d:"Independent review of designs, bills of quantities, bids and contracts before costs arise.",
+  s6_t:"Permit strategy", s6_d:"Preliminary enquiries, coordination with the building authority and specialist agencies, and a reliable route to approval.",
+  port_label:"Portfolio", port_title:"Selected projects.",
+  p1_type:"Residential", p1_size:"320 m² GFA", p1_t:"Rooftop extension, Stuttgart",
+  p1_d:"Option study and client advisory for two additional timber-frame storeys. Approved following a preliminary enquiry.",
+  p1_alt:"Floor plan of a residential building",
+  p2_type:"Conversion", p2_size:"1,850 m²", p2_t:"Warehouse to offices, Karlsruhe",
+  p2_d:"Building assessment, use concept and tender review for converting a storage hall.",
+  p2_alt:"Column grid of an industrial hall",
+  p3_type:"Urban block", p3_size:"2.4 ha", p3_t:"Neighbourhood feasibility study, Freiburg",
+  p3_d:"Density and access options for a residential quarter, coordinated with the planning office and the investor.",
+  p3_alt:"Site plan of a neighbourhood",
+  p4_type:"New build", p4_size:"under construction", p4_t:"Daycare centre, Frankfurt",
+  p4_d:"Project support in work phases 5 to 8 with scheduling, cost control and handover support.",
+  p4_alt:"Section through a new daycare centre",
+  port_note:"The projects on this page are sample content and will be replaced with real references.",
+  proc_label:"Approach", proc_title:"Four stages, one point of contact.",
+  st1_t:"Intro call", st1_d:"We clarify goals, budget and constraints. The first conversation is free of obligation.",
+  st2_t:"Analysis", st2_d:"I review site, existing building, documents and planning law, and name opportunities and risks.",
+  st3_t:"Recommendation", st3_d:"You receive a traceable recommendation with options, cost ranges and timelines.",
+  st4_t:"Support", st4_d:"If you wish, I support delivery through to handover and represent your interests on site.",
+  cont_label:"Contact", cont_title:"Tell me about your project.",
+  f_name:"Name", f_mail:"Email", f_topic:"Topic", f_msg:"Message",
+  o1:"Client advisory", o2:"Feasibility study", o3:"Project support",
+  o4:"Existing buildings and refurbishment", o5:"Design and tender review", o6:"Other",
+  f_consent:"I agree that my details may be used to process my enquiry.",
+  f_send:"Prepare enquiry",
+  err_fill:"Please complete name, email and message and confirm your consent.",
+  err_mail:"Please check the email address.",
+  res_title:"Your message is ready.",
+  res_hint:"This page does not send forms itself. Copy the text and send it to the email address above.",
+  res_copy:"Copy text", copy:"Copy", copied:"Copied", copy_fail:"Please copy manually",
+  d_mail:"Email", d_phone:"Phone", d_place:"Location",
+  d_place_v:"Musterstraße 1, 00000 Musterstadt, Germany",
+  d_hours:"Available", d_hours_v:"Mon–Fri, 9 am–5 pm",
+  imp_label:"Legal notice", imp_title:"Information pursuant to § 5 DDG.",
+  imp_p1:"Lindner Architekturberatung, Musterstraße 1, 00000 Musterstadt, Germany. Phone +49 000 0000000, kontakt@beispiel.de.",
+  imp_p2:"Professional title: Architect, awarded in Germany. Member of the Chamber of Architects Baden-Württemberg, registration number 00000. Supervisory body: Architektenkammer Baden-Württemberg, Danneckerstraße 54, 70182 Stuttgart.",
+  imp_p3:"Professional indemnity insurance: Musterversicherung AG, Musterstadt. Geographical scope: European Union. VAT identification number: DE000000000.",
+  imp_note:"Placeholder: replace all details with the real data before publishing.",
+  dsg_label:"Privacy", dsg_title:"How your data is handled.",
+  dsg_h1:"Contact form",
+  dsg_p1:"The form on this page does not transmit data to a server. Your input stays in the browser and is only assembled into a text that you copy and send by email yourself.",
+  dsg_h2:"Typeface",
+  dsg_p2:"This page loads the Poppins typeface from Google Fonts, which transmits your IP address to Google. For production use, self-hosting the font files is recommended.",
+  dsg_h3:"Local storage",
+  dsg_p3:"The selected language is stored in your browser's local storage so it is kept on your next visit. No cookies are set for analytics.",
+  dsg_note:"Placeholder: have these notes reviewed and completed by a legal professional before publishing.",
+  foot_tag:"Let's talk about your project.", totop:"Back to top",
+  foot_copy:"© 2026 Lindner Architekturberatung",
+  legal_imprint:"Legal notice", legal_privacy:"Privacy"
+ }
+};
+
+var nodes = document.querySelectorAll("[data-i18n]"),
+    arias = document.querySelectorAll("[data-i18n-aria]"),
+    lang  = "de";
+
+/* Deutsch als Ausgangszustand aus dem Markup sichern */
+Array.prototype.forEach.call(nodes, function(el){
+  if(T.de[el.dataset.i18n] == null) T.de[el.dataset.i18n] = el.textContent;
+});
+Array.prototype.forEach.call(arias, function(el){ T.de[el.dataset.i18nAria] = el.getAttribute("aria-label") || ""; });
+
+function apply(l){
+  lang = (l === "en") ? "en" : "de";
+  root.lang = lang;
+  var dict = T[lang];
+  Array.prototype.forEach.call(nodes, function(el){
+    var k = el.dataset.i18n;
+    if(dict[k] != null && !el.children.length) el.textContent = dict[k];
+  });
+  Array.prototype.forEach.call(arias, function(el){
+    var k = el.dataset.i18nAria;
+    if(dict[k]) el.setAttribute("aria-label", dict[k]);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function(b){
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+  try{ localStorage.setItem("lab-lang", lang); }catch(e){}
+}
+
+Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function(b){
+  b.addEventListener("click", function(){ apply(b.dataset.lang); });
+});
+
+var stored = null;
+try{ stored = localStorage.getItem("lab-lang"); }catch(e){}
+apply(stored || ((navigator.language || "de").toLowerCase().indexOf("de") === 0 ? "de" : "en"));
+
+/* ---------------------------------------------- 10  Formular */
+var form   = document.getElementById("contact-form"),
+    result = document.getElementById("result"),
+    resTxt = document.getElementById("result-text"),
+    resBtn = document.getElementById("result-copy"),
+    resSt  = document.getElementById("result-status"),
+    errBox = document.getElementById("form-error"),
+    MAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function t(k){ return (T[lang] && T[lang][k]) || T.de[k] || ""; }
+
+function status(el, key){
+  el.textContent = t(key);
+  setTimeout(function(){ el.textContent = ""; }, 2500);
+}
+
+function copyText(text, statusEl){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      if(statusEl) status(statusEl, "copied");
+    }, function(){
+      if(statusEl) status(statusEl, "copy_fail");
+    });
+  } else if(statusEl){
+    status(statusEl, "copy_fail");
+  }
+  return true;
+}
+
+if(form){
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var f = form.elements,
+        name = f.name.value.trim(),
+        mail = f.email.value.trim(),
+        msg  = f.message.value.trim(),
+        ok   = f.consent.checked,
+        topicEl = f.topic,
+        topic = topicEl.options[topicEl.selectedIndex].textContent;
+
+    errBox.textContent = "";
+    if(!name || !mail || !msg || !ok){ errBox.textContent = t("err_fill"); return; }
+    if(!MAIL_RE.test(mail)){ errBox.textContent = t("err_mail"); return; }
+
+    resTxt.textContent = (lang === "en" ? "Enquiry: " : "Anfrage: ") + topic + "\n" +
+                         (lang === "en" ? "From: "    : "Von: ")     + name + " <" + mail + ">\n\n" + msg;
+    result.hidden = false;
+    result.scrollIntoView({block:"nearest", behavior: reduce ? "auto" : "smooth"});
+  });
+}
+
+if(resBtn) resBtn.addEventListener("click", function(){ copyText(resTxt.textContent, resSt); });
+
+Array.prototype.forEach.call(document.querySelectorAll(".copy-btn[data-copy]"), function(btn){
+  btn.addEventListener("click", function(){
+    var src = document.querySelector(btn.dataset.copy);
+    if(!src) return;
+    var text = src.textContent.trim();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text);
+    } else if(window.getSelection && document.createRange){
+      var r = document.createRange();
+      r.selectNodeContents(src);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    }
+    var old = btn.textContent;
+    btn.textContent = t("copied");
+    setTimeout(function(){ btn.textContent = old; }, 1800);
+  });
+});
+
+/* ---------------------------------------------- Start */
+buildParallax();
+window.addEventListener("scroll", schedule, {passive:true});
+window.addEventListener("resize", schedule, {passive:true});
+frame();
+
+})();
+</script>
+</body>
+</html>
