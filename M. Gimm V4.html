@@ -1,0 +1,1598 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>M.Grimm Consult – Konstruktion, Projektleitung und technische Lösungen</title>
+<meta name="description" content="M.Grimm Consult, Michael Grimm, Diplom-Ingenieur Maschinenbau: konstruktive Lösungen für Architektur, Design, Maschinen- und Anlagenbau, Projektleitung von der Idee bis zur Montage. Über 37 Jahre Erfahrung, über 500 Projekte.">
+<meta name="theme-color" content="#f1f0ef">
+<meta property="og:type" content="website">
+<meta property="og:title" content="M.Grimm Consult">
+<meta property="og:description" content="Konstruktion, Projektleitung und Lieferantenauswahl für Architektur, Kunst, Maschinen- und Anlagenbau.">
+<meta property="og:image" content="https://mgrimm-consult.de/assets/hero_blueprint_light.svg">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://mgrimm-consult.de/">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://mgrimm-consult.de/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d10000'/%3E%3Cpath d='M7 24V9l5 8 5-8v15' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"></noscript>
+<link rel="preload" as="image" href="assets/hero_blueprint_light.svg" media="(prefers-color-scheme: light)">
+<link rel="preload" as="image" href="assets/hero_blueprint_dark.svg" media="(prefers-color-scheme: dark)">
+<script>
+/* Erscheinungsbild vor dem ersten Zeichnen setzen: gespeicherte Wahl,
+   sonst Systemfarbe, sonst hell. Verhindert ein Aufblitzen. */
+(function(){var t=null;try{t=localStorage.getItem("mg-theme");}catch(e){}
+if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}
+document.documentElement.setAttribute("data-theme",t);})();
+</script>
+<style>
+
+/* ============================================================
+   1  GRUNDSYSTEM
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+ color-scheme:light;
+ --bg:#fff; --surface:#f5f4f4; --fg:#2a2829; --strong:#000; --muted:#6a6667; --line:#dcd9da;
+ --accent:#d10000; --accent-dark:#960000; --accent-text:#d10000; --accent-hi:#d10000; --on-accent:#fff;
+ --hero-bg:#f1f0ef; --hero-fg:#2a2829; --hero-muted:#6a6667; --hero-grid:#e3e1e0;
+ --hero-line:#cfcccb; --hero-surface:#fbfafa;
+ --art:url("assets/hero_blueprint_light.svg"); --po:.38; --glow-o:.4;
+ --top-bg:var(--hero-bg); --top-fg:var(--hero-fg); --top-muted:var(--hero-muted); --top-line:var(--hero-line);
+ --ease:cubic-bezier(.22,.61,.24,1); --ease-soft:cubic-bezier(.33,.9,.28,1);
+ --font-display:"Poppins","Helvetica Neue",Arial,sans-serif; --font-body:var(--font-display); --font-mono:var(--font-display);
+ --gut:clamp(18px,4.2vw,40px);
+ --gl:max(var(--gut),env(safe-area-inset-left,0px)); --gr:max(var(--gut),env(safe-area-inset-right,0px));
+ --head:4rem;
+ --dur-fast:.3s; --dur-med:.55s; --dur-slow:1.1s;
+ --h1-max:4.7rem; --h2-max:3.3rem; --ghost-max:11rem;
+ --crop:14px; --crop-c:var(--accent-text); --grain-o:.05;
+ padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme=dark]{
+ color-scheme:dark;
+ --bg:#000; --surface:#161415; --fg:#e9e7e7; --strong:#fff; --muted:#a29d9e; --line:#2f2c2d;
+ --accent-text:#ff5a5a; --accent-hi:#ff5a5a;
+ --hero-bg:#2a2829; --hero-fg:#fff; --hero-muted:#cbc7c8; --hero-grid:#373435;
+ --hero-line:#5e5a5b; --hero-surface:#322f30;
+ --art:url("assets/hero_blueprint_dark.svg"); --po:.5; --glow-o:.5;
+ --grain-o:.06;
+}
+
+html.past-hero{--top-bg:var(--bg);--top-fg:var(--strong);--top-muted:var(--muted);--top-line:var(--line)}
+
+.dark{--fg:var(--hero-fg);--strong:var(--hero-fg);--muted:var(--hero-muted);--line:var(--hero-line);
+ --surface:var(--hero-surface);--accent-text:var(--accent-hi);
+ background-color:var(--hero-bg);color:var(--fg);
+ transition:background-color .5s var(--ease),color .5s var(--ease)}
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--head) + env(safe-area-inset-top,0px) + .75rem);
+ -webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;padding:0;overflow-x:clip;
+ background:var(--bg);color:var(--fg);font:400 16px/1.7 var(--font-body);-webkit-font-smoothing:antialiased;
+ transition:background-color .5s var(--ease),color .5s var(--ease)}
+body.nav-open{overflow:hidden}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;
+ background:var(--top-bg);transition:background .35s var(--ease)}
+
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+img{max-width:100%}
+a{color:inherit}
+
+h1{font-size:clamp(2.3rem,6.2vw,var(--h1-max));font-weight:700;letter-spacing:-.035em;line-height:1.06;max-width:13ch}
+
+.mono{font:500 .72rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+b,strong{font-weight:600}
+.num{font-variant-numeric:tabular-nums}
+
+:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
+.hero :focus-visible,.dark :focus-visible,.site-header:not(.past) :focus-visible{outline-color:var(--accent-hi)}
+html.past-hero .site-header :focus-visible{outline-color:var(--accent-text)}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:60;background:var(--accent);color:#fff;padding:.8rem 1.2rem;
+ font:600 .78rem var(--font-body);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.skip:focus{left:var(--gl)}
+
+.wrap{width:100%;max-width:calc(1120px + var(--gl) + var(--gr));margin-inline:auto;
+ padding-left:var(--gl);padding-right:var(--gr)}
+.bleed{margin:0}
+
+/* ============================================================
+   2  HEADER
+   ============================================================ */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;width:100%;
+ background:var(--top-bg);color:var(--top-fg);border-bottom:1px solid var(--top-line);
+ transition:background .35s var(--ease),border-color .35s var(--ease),color .35s var(--ease)}
+.site-header .wrap{display:flex;align-items:center;gap:1rem;min-height:var(--head)}
+@supports (backdrop-filter:blur(2px)){
+ html.past-hero .site-header{background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15)}
+}
+
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-weight:700;font-size:1.02rem;text-decoration:none;color:var(--top-fg)}
+.brand .mark{position:relative;flex:none;width:1.4rem;height:1.4rem;background:var(--accent);transition:transform .5s ease}
+.brand .mark::after{content:"";position:absolute;inset:.32rem;border-left:2px solid #fff;border-bottom:2px solid #fff}
+.brand:hover .mark{transform:rotate(90deg)}
+.brand .sub{font-weight:500;color:var(--top-muted);transition:color .35s var(--ease)}
+
+.nav{display:flex;align-items:center;gap:1.8rem;margin-left:auto}
+.head-tools{display:flex;align-items:center;gap:.5rem;margin-left:1.4rem}
+.nav a{position:relative;font-size:.9rem;font-weight:500;color:var(--top-muted);text-decoration:none;
+ padding-block:.2rem;transition:color .3s var(--ease)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-.15rem;height:2px;background:var(--accent-hi);
+ transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover,.nav a.active{color:var(--top-fg)}
+.nav a:hover::after,.nav a.active::after{transform:none}
+
+.progress{position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--accent-hi);
+ transform:scaleX(var(--p,0));transform-origin:left}
+
+/* ============================================================
+   3  HERO
+   ============================================================ */
+.hero{position:relative;isolation:isolate;overflow-x:clip;
+ background-color:var(--hero-bg);color:var(--hero-fg);
+ --gpos:-1px calc(-1px + var(--sy,0)*0.12px);
+ background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),
+                  linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);
+ background-size:56px 56px;background-position:var(--gpos);
+ padding-top:clamp(3.5rem,8vw,6.5rem);padding-bottom:clamp(3.5rem,7vw,5.5rem)}
+
+.hero::before,.glow::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background-image:linear-gradient(var(--accent-hi) 1px,transparent 1px),
+                  linear-gradient(90deg,var(--accent-hi) 1px,transparent 1px);
+ background-size:56px 56px;background-position:var(--gpos);opacity:var(--glow-o);
+ -webkit-mask-image:radial-gradient(220px circle at var(--mx,-999px) var(--my,-999px),#000,transparent 72%);
+ mask-image:radial-gradient(220px circle at var(--mx,-999px) var(--my,-999px),#000,transparent 72%)}
+
+.glow{position:relative;isolation:isolate;--gpos:-1px -1px;
+ background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),
+                  linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);
+ background-size:56px 56px;background-position:var(--gpos)}
+.glow::before{opacity:.4}
+
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(2rem,5vw,3.2rem);align-items:end}
+.hero-text{min-width:0;position:relative;z-index:1;max-width:58rem}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.8rem;color:var(--accent-hi)}
+.eyebrow::before{content:"";width:2.2rem;height:1px;background:var(--accent-hi)}
+.hero h1{margin-top:1.1rem}
+.lead{margin-top:1.6rem;font-size:clamp(1rem,1.7vw,1.12rem);max-width:46ch;color:var(--hero-muted)}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.rise{animation:rise 1s var(--ease) both;animation-delay:calc(var(--d,0)*1ms)}
+
+.blueprint{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;contain:paint}
+.plan{position:absolute;top:50%;left:50%;width:min(1620px,154%);aspect-ratio:1200/730;
+ translate:-50% calc(-50% + var(--sy,0)*-0.045px);
+ background:var(--art) center/contain no-repeat;opacity:var(--po);
+ -webkit-mask-image:radial-gradient(118% 104% at 50% 46%,#000 38%,transparent 76%);
+ mask-image:radial-gradient(118% 104% at 50% 46%,#000 38%,transparent 76%);
+ animation:planin 2.4s var(--ease-soft) .25s both}
+@keyframes planin{from{opacity:0;scale:1.045;filter:blur(9px)}to{opacity:var(--po);scale:1;filter:blur(0)}}
+
+.titleblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ margin-top:clamp(2.5rem,5vw,4rem);border:1px solid var(--hero-line);background:transparent}
+.titleblock div{padding:.9rem 1.1rem 1rem;border-left:1px solid var(--hero-line);min-width:0}
+.titleblock div:first-child{border-left:0}
+.titleblock .mono{color:var(--hero-muted)}
+.titleblock b{display:block;font-weight:500;font-size:.93rem;margin-top:.2rem;overflow-wrap:anywhere}
+
+/* ============================================================
+   4  BUTTONS
+   ============================================================ */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;
+ justify-content:space-between;gap:1.2rem;min-height:3.5rem;padding:0 1.5rem;text-decoration:none;cursor:pointer;
+ font:600 .78rem var(--font-body);letter-spacing:.12em;text-transform:uppercase;
+ border:1px solid var(--accent);transition:color .4s var(--ease),border-color .4s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateX(-101%);transition:transform .55s var(--ease)}
+.btn::after{content:"";flex:none;width:1.5rem;height:.75rem;background:currentColor;
+ -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'><path d='M0 6h22M17 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.5'/></svg>") center/contain no-repeat;
+ mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'><path d='M0 6h22M17 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.5'/></svg>") center/contain no-repeat;
+ transition:transform .45s var(--ease)}
+.btn:hover::before{transform:none}
+.btn:hover::after{transform:translateX(6px)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary::before{background:var(--accent-dark)}
+.btn.primary:hover{border-color:var(--accent-dark)}
+.btn.ghost{background:transparent;color:var(--hero-fg);border-color:var(--hero-muted)}
+.btn.ghost::before{background:var(--hero-fg)}
+.btn.ghost:hover{color:var(--hero-bg);border-color:var(--hero-fg)}
+.btn.small{min-height:2.6rem;padding:0 1.1rem;gap:.8rem;font-size:.72rem}
+.btn.magnetic{transition:transform .25s var(--ease-soft),color .4s var(--ease),border-color .4s var(--ease)}
+@media(hover:none),(prefers-reduced-motion:reduce){.btn.magnetic{transition:color .4s var(--ease),border-color .4s var(--ease)}}
+
+/* ============================================================
+   5  SEKTIONSRASTER
+   ============================================================ */
+section.sheet{padding-block:clamp(4rem,9vw,7.5rem);border-bottom:1px solid var(--line)}
+.sheet .wrap{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:2rem clamp(1.5rem,5vw,4rem)}
+.sheet .wrap>.mono{position:sticky;top:calc(env(safe-area-inset-top,0px) + 6rem);align-self:start;
+ display:inline-flex;align-items:center;gap:.7rem}
+.sheet .wrap>.mono::before{content:"";width:1.6rem;height:2px;background:var(--accent-text)}
+.sheet h2{font-size:clamp(2rem,4.4vw,var(--h2-max));font-weight:600;max-width:18ch}
+.sheet .body{display:flex;flex-direction:column;gap:3rem;min-width:0}
+
+.js .sheet h2{clip-path:inset(0 0 100% 0);transform:translateY(.45em);
+ transition:clip-path 1.35s var(--ease-soft),transform 1.35s var(--ease-soft)}
+.js .sheet h2.seen{clip-path:inset(-.25em -.1em -.25em -.1em);transform:none}
+
+.facts,.acc{position:relative}
+.facts::before,.acc::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--strong);
+ transform-origin:left;transition:transform 1.8s var(--ease-soft)}
+.js .facts::before,.js .acc::before{transform:scaleX(0)}
+.js .facts.seen::before,.js .acc.seen::before{transform:none}
+
+.note{font-size:.85rem;color:var(--muted)}
+
+section.sheet>.wrap{position:relative}
+section.sheet>.wrap::before,section.sheet>.wrap::after{content:"";position:absolute;width:var(--crop);height:var(--crop);
+ border:1px solid var(--crop-c);opacity:.55;pointer-events:none}
+section.sheet>.wrap::before{top:-1px;right:calc(-1*var(--gr) + 2px);border-left:0;border-bottom:0}
+section.sheet>.wrap::after{bottom:-1px;left:calc(-1*var(--gl) + 2px);border-right:0;border-top:0}
+@media(max-width:860px){section.sheet>.wrap::before,section.sheet>.wrap::after{display:none}}
+
+.sheet .body{position:relative;overflow:hidden}
+.sheet .body::before{content:counter(sec,decimal-leading-zero);position:absolute;top:-.6rem;right:0;z-index:-1;
+ font:700 clamp(6rem,16vw,var(--ghost-max))/1 var(--font-display);letter-spacing:-.04em;color:var(--strong);
+ opacity:.045;pointer-events:none;user-select:none}
+.dark .sheet .body::before{color:var(--hero-fg);opacity:.06}
+@media(max-width:680px){.sheet .body::before{font-size:clamp(4.5rem,24vw,7rem)}}
+
+/* ============================================================
+   6  ÜBER MICH
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:2.5rem;align-items:start}
+.about-text{display:flex;flex-direction:column;gap:1.2rem;max-width:60ch}
+.about-text p:first-child{font-size:1.12rem;color:var(--strong)}
+.about-text p+p{color:var(--muted)}
+
+.portrait{position:relative;aspect-ratio:4/5;border:1px solid var(--line);background:var(--surface);
+ display:flex;align-items:flex-end;padding:.9rem;translate:0 calc(var(--ty,0)*1px)}
+.portrait::before,.portrait::after{content:"";position:absolute;width:1.6rem;height:1.6rem;
+ border:2px solid var(--accent-text);pointer-events:none}
+.portrait::before{top:-7px;left:-7px;border-right:0;border-bottom:0}
+.portrait::after{bottom:-7px;right:-7px;border-left:0;border-top:0}
+.portrait svg{position:absolute;inset:0;width:100%;height:100%}
+.portrait .mono{position:relative;z-index:1}
+
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.facts>div{padding:1.2rem 1rem 0 0;min-width:0}
+.facts b{display:block;font-weight:600;font-size:clamp(2rem,4.4vw,3.1rem);letter-spacing:-.035em;line-height:1.1;
+ font-variant-numeric:tabular-nums;color:var(--accent-text)}
+.facts span{display:block;font-size:.88rem;color:var(--muted)}
+.facts>div::after{content:"";display:block;width:3.4rem;height:2px;background:var(--accent-text);margin-top:.6rem}
+.js .facts>div.reveal::after{width:0}
+.js .facts>div.reveal.in::after{width:3.4rem;transition:width 1.1s var(--ease-soft) .15s}
+
+/* ============================================================
+   7  LEISTUNGEN – AKKORDEON (Variante A: immer nur ein Eintrag offen)
+   ============================================================ */
+.acc{list-style:none;margin:0;padding:0}
+.acc-head{margin:0;font:inherit}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-trigger{all:unset;box-sizing:border-box;display:grid;width:100%;cursor:pointer;
+ grid-template-columns:2.6rem minmax(0,1fr) 1.6rem;align-items:center;gap:.4rem 1.4rem;
+ padding:1.7rem 1.1rem;position:relative;transition:background var(--dur-med) var(--ease)}
+.acc-trigger:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px;z-index:1}
+.acc-trigger::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--accent);
+ transform:scaleX(0);transform-origin:left;transition:transform var(--dur-slow) var(--ease)}
+.acc-num{font-size:.78rem;color:var(--accent-text);transition:transform var(--dur-med) var(--ease),color var(--dur-med) var(--ease)}
+.acc-ttl{display:flex;flex-direction:column;gap:.25rem;min-width:0;text-align:left}
+.acc-title{font:600 1.28rem/1.3 var(--font-display);letter-spacing:-.015em;color:var(--fg);
+ transition:color var(--dur-med) var(--ease)}
+.acc-sub{font-size:.92rem;color:var(--muted);transition:color var(--dur-med) var(--ease)}
+.acc-ico{position:relative;width:1.6rem;height:1.6rem;flex:none;border:1px solid var(--line);
+ transition:border-color var(--dur-med) var(--ease)}
+.acc-ico::before,.acc-ico::after{content:"";position:absolute;background:var(--accent-text);
+ transition:transform var(--dur-med) var(--ease-soft),opacity var(--dur-fast) var(--ease)}
+.acc-ico::before{left:.36rem;right:.36rem;top:50%;height:1px}
+.acc-ico::after{top:.36rem;bottom:.36rem;left:50%;width:1px}
+@media(hover:hover){
+ .acc-trigger:hover{background:var(--surface)}
+ .acc-trigger:hover .acc-title{color:var(--accent-text)}
+ .acc-trigger:hover::before{transform:none}
+}
+.acc-item.open .acc-trigger{background:var(--surface)}
+.acc-item.open .acc-trigger::before{transform:none}
+.acc-item.open .acc-title{color:var(--accent-text)}
+.acc-item.open .acc-num{transform:scale(1.15);color:var(--accent-hi)}
+.acc-item.open .acc-ico{border-color:var(--accent-text)}
+.acc-item.open .acc-ico::after{opacity:0;transform:scaleY(0)}
+
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-slow) var(--ease-soft)}
+.acc-panel-in{overflow:hidden;min-height:0}
+.acc-item.open .acc-panel{grid-template-rows:1fr}
+.acc-panel-in{padding:0 1.1rem 1.9rem 3.95rem}
+.acc-panel-in>p:first-child{color:var(--fg);max-width:62ch}
+.acc-points{list-style:none;margin:1.1rem 0;padding:0;display:flex;flex-direction:column;gap:.6rem;max-width:62ch}
+.acc-points li{position:relative;padding-left:1.3rem;color:var(--muted);font-size:.95rem;
+ opacity:0;transform:translateX(-10px);transition:opacity 0s,transform 0s}
+.acc-points li::before{content:"";position:absolute;left:0;top:.6em;width:.6rem;height:1px;background:var(--accent-text)}
+.acc-item.open .acc-points li{opacity:1;transform:none;
+ transition:opacity var(--dur-med) var(--ease-soft),transform var(--dur-med) var(--ease-soft)}
+.acc-item.open .acc-points li:nth-child(1){transition-delay:.12s}
+.acc-item.open .acc-points li:nth-child(2){transition-delay:.19s}
+.acc-item.open .acc-points li:nth-child(3){transition-delay:.26s}
+.acc-item.open .acc-points li:nth-child(4){transition-delay:.33s}
+.acc-item.open .acc-points li:nth-child(5){transition-delay:.4s}
+.acc-panel-in .btn{margin-top:1.2rem}
+@media(max-width:680px){
+ .acc-trigger{grid-template-columns:2.1rem minmax(0,1fr) 1.5rem;padding:1.3rem .6rem;gap:.3rem 1rem}
+ .acc-panel-in{padding-left:.6rem;padding-right:.6rem}
+ .acc-title{font-size:1.1rem}
+}
+@media(prefers-reduced-motion:reduce){.acc-points li{opacity:1;transform:none}}
+
+/* ============================================================
+   8  PORTFOLIO
+   ============================================================ */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem 2rem}
+@media(min-width:681px){.projects>.project:nth-child(even){margin-top:3.5rem}}
+.project{display:flex;flex-direction:column;gap:.9rem;min-width:0;translate:0 calc(var(--ty,0)*1px)}
+.drawing{position:relative;overflow:hidden;aspect-ratio:8/5;background:var(--surface);
+ border:1px solid var(--line);color:var(--strong);transition:border-color .3s}
+.drawing svg{display:block;width:100%;height:100%;transition:transform .9s var(--ease)}
+.drawing::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent-hi);
+ transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.drawing::before{content:"";position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--accent-hi);
+ z-index:2;pointer-events:none;transition:left 1.5s var(--ease-soft) .15s,opacity .4s linear 1.4s}
+.js .project:not(.seen) .drawing::before{left:0;opacity:1}
+.js .project.seen .drawing::before{left:100%;opacity:0}
+.project .meta{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem}
+.project h3{font-size:1.28rem;transition:color .3s var(--ease)}
+.project p{font-size:.96rem;color:var(--muted)}
+@media(hover:hover){
+ .project:hover .drawing{border-color:var(--accent-hi)}
+ .project:hover .drawing svg{transform:scale(1.06)}
+ .project:hover .drawing::after{transform:scaleX(1)}
+ .project:hover h3{color:var(--accent-hi)}
+}
+.js .project .drawing{clip-path:inset(0 100% 0 0);transition:clip-path 1.5s var(--ease-soft) .15s,border-color .4s}
+.js .project.seen .drawing{clip-path:inset(0)}
+
+/* ============================================================
+   9  ARBEITSWEISE
+   ============================================================ */
+.steps{position:relative;list-style:none;margin:0;padding:0;
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);counter-reset:step}
+.steps::before{content:"";position:absolute;left:0;right:0;top:-1px;height:3px;background:var(--accent);
+ transform-origin:left;transform:scaleX(var(--sp,0));transition:transform .45s var(--ease-soft)}
+.steps li{padding:1.4rem 1.4rem .4rem 0;counter-increment:step;display:flex;flex-direction:column;gap:.55rem}
+.steps li::before{content:"Phase " counter(step);font:500 .72rem var(--font-mono);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--accent-text)}
+.steps h3{font-size:1.18rem;transition:color .3s}
+.steps p{color:var(--muted);font-size:.95rem}
+@media(hover:hover){.steps li:hover h3{color:var(--accent-text)}}
+
+/* ============================================================
+   10  KONTAKT
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:3rem}
+form{display:flex;flex-direction:column;gap:1.4rem;min-width:0}
+.field{display:flex;flex-direction:column;gap:.2rem}
+.field label{font:500 .72rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+ transition:color .25s}
+.field:focus-within label{color:var(--accent-text)}
+input,select,textarea{font:400 1rem var(--font-body);color:var(--fg);background:transparent;border:0;
+ border-bottom:1px solid var(--line);border-radius:0;padding:.7rem 0;width:100%;
+ transition:border-color .25s,box-shadow .25s}
+select{appearance:none;-webkit-appearance:none;cursor:pointer;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'><path d='M2 3l10 7 10-7' fill='none' stroke='%236a6667' stroke-width='1.6'/></svg>");
+ background-repeat:no-repeat;background-position:right center;background-size:1rem;padding-right:1.6rem}
+input:hover,select:hover,textarea:hover{border-bottom-color:var(--muted)}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent);box-shadow:0 1px 0 0 var(--accent)}
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-bottom-color:var(--accent-text)}
+textarea{min-height:8rem;resize:vertical}
+.check{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+.check input{width:1.1rem;height:1.1rem;margin-top:.25rem;padding:0;accent-color:var(--accent);flex:none;border-bottom:0}
+.check a{color:var(--accent-text)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
+form .btn{align-self:start}
+.form-error{font-size:.85rem;color:var(--accent-text)}
+.form-error:empty{display:none}
+
+.result{border:1px solid var(--accent);background:var(--surface);padding:1.3rem;
+ display:flex;flex-direction:column;gap:.8rem}
+.result[hidden]{display:none}
+.result h3{font-size:1.15rem}
+.result pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:400 .88rem/1.6 var(--font-body);color:var(--muted)}
+.result-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+
+.details{display:flex;flex-direction:column;gap:1.4rem;margin:0}
+.details dt{margin-bottom:.2rem}
+.details dd{margin:0;font-size:1.05rem;color:var(--strong);overflow-wrap:anywhere}
+.copy-line{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.copy-btn{font:500 .7rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;padding:.3rem .65rem;
+ border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;
+ transition:color .25s,border-color .25s,background .25s}
+.copy-btn:hover{color:var(--on-accent);background:var(--accent);border-color:var(--accent)}
+.status{font:500 .72rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text)}
+
+/* ============================================================
+   11  FOOTER
+   ============================================================ */
+.foot{padding-top:clamp(3.5rem,7vw,5.5rem);padding-bottom:2rem}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.foot .brand{color:var(--hero-fg)}
+.foot .brand .sub{color:var(--hero-muted)}
+.claim{margin-top:1.4rem;font-size:clamp(1.5rem,3.4vw,2.4rem);font-weight:600;letter-spacing:-.025em;
+ line-height:1.15;max-width:18ch;text-wrap:balance}
+.totop{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--hero-fg);
+ border:1px solid var(--hero-line);padding:.8rem 1.2rem;font-weight:500;font-size:.9rem;
+ transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.totop span{transition:transform .35s var(--ease)}
+.totop:hover{background:var(--hero-fg);border-color:var(--hero-fg);color:var(--hero-bg)}
+.totop:hover span{transform:translateY(-4px)}
+.foot-legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem 2rem;margin-top:3rem;
+ padding-top:1.2rem;border-top:1px solid var(--hero-line)}
+.foot-legal a{color:inherit}
+
+.legal h2{max-width:none}
+.legal-body{display:flex;flex-direction:column;gap:1rem;max-width:70ch}
+.legal-body h3{font-size:1.1rem;margin-top:.8rem}
+.legal-body p{color:var(--muted);font-size:.95rem}
+
+/* ============================================================
+   12  REVEAL
+   ============================================================ */
+.js .reveal{opacity:0;transform:translateY(26px);
+ transition:opacity 1.15s var(--ease-soft),transform 1.15s var(--ease-soft);
+ transition-delay:calc(var(--i,0)*110ms);will-change:opacity,transform}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   13  RESPONSIVE
+   ============================================================ */
+@media(max-width:960px){
+ .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+ .plan{width:200%}
+}
+@media(max-width:560px){
+ .plan{width:280%;opacity:calc(var(--po)*.9)}
+}
+@media(max-width:860px){
+ .sheet .wrap{grid-template-columns:minmax(0,1fr);gap:1.2rem}
+ .sheet .wrap>.mono{position:static}
+ .about-grid{grid-template-columns:minmax(0,1fr)}
+ .portrait{max-width:260px}
+ .contact-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:760px){
+ .nav{display:none}
+ .titleblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .titleblock div:nth-child(3){border-left:0}
+ .titleblock div:nth-child(n+3){border-top:1px solid var(--hero-line)}
+}
+@media(max-width:680px){
+ .projects{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:560px){
+ .cta-row .btn{width:100%}
+ .row2{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:520px){
+ .steps{grid-template-columns:minmax(0,1fr)}
+ .steps li{border-bottom:1px solid var(--line);padding-bottom:1.1rem}
+}
+@media(max-width:480px){
+ .facts{grid-template-columns:minmax(0,1fr)}
+ .facts>div{border-bottom:1px solid var(--line);padding-bottom:.9rem}
+ .brand .sub{display:none}
+}
+
+@media(min-width:1700px){
+ :root{--h1-max:6.6rem;--h2-max:4.3rem;--ghost-max:15rem;--gut:clamp(28px,3.2vw,72px)}
+ .wrap{max-width:calc(1320px + var(--gl) + var(--gr))}
+ .projects{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .projects>.project:nth-child(even){margin-top:0}
+ .projects>.project:nth-child(3n+2){margin-top:4rem}
+}
+
+/* ============================================================
+   14  REDUCED MOTION
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation:none!important}
+ .js .reveal{opacity:1;transform:none}
+ .acc-points li{opacity:1;transform:none}
+}
+
+@media print{
+ body{padding:0;color:#000;background:#fff}
+ .site-header,.hero::before,.glow::before,.blueprint,.totop,.progress,.burger,.mnav,.theme,.scrollcue,.cta-band{display:none!important}
+ body::after{display:none!important}
+ .dark{background:#fff!important;color:#000!important;--fg:#000;--strong:#000;--muted:#333;--line:#999;--accent-text:#000}
+ .sheet{padding-block:1.5rem;break-inside:avoid}
+}
+
+/* ============================================================
+   15  ERGAENZUNGEN  (Fotos im Portfolio, Referenzliste)
+   ============================================================ */
+.drawing img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+@media(hover:hover){.project:hover .drawing img{transform:scale(1.06)}}
+.project figure{margin:0;display:flex;flex-direction:column;gap:.9rem}
+.credit{font-size:.74rem;line-height:1.5;color:var(--muted)}
+.credit a{color:inherit}
+.reflist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);columns:2;column-gap:clamp(1.5rem,4vw,3rem)}
+.reflist li{display:block;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.92rem;break-inside:avoid}
+.reflist li b{display:inline-block;min-width:5.5rem;font-weight:500;color:var(--accent-text);font-variant-numeric:tabular-nums}
+.reflist li span{display:block;color:var(--muted);font-size:.82rem}
+@media(max-width:680px){.reflist{columns:1}}
+
+/* ============================================================
+   16  HEADER-WERKZEUGE, MOBILE NAVIGATION, THEMA
+   ============================================================ */
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+ width:2.6rem;height:2.6rem;flex:none;padding:0;cursor:pointer;background:transparent;
+ color:var(--top-fg);border:1px solid var(--top-line);
+ transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
+.iconbtn:hover{border-color:var(--top-fg)}
+.iconbtn svg{width:1.05rem;height:1.05rem;display:block;fill:none;stroke:currentColor;stroke-width:1.6}
+.theme .ico-sun{display:none}
+.theme .ico-moon{display:block}
+:root[data-theme=dark] .theme .ico-sun{display:block}
+:root[data-theme=dark] .theme .ico-moon{display:none}
+
+.burger{display:none}
+.burger svg line{transition:transform .35s var(--ease),opacity .25s}
+.burger[aria-expanded=true] .l1{transform:translate(0,5px) rotate(45deg);transform-origin:center}
+.burger[aria-expanded=true] .l2{opacity:0}
+.burger[aria-expanded=true] .l3{transform:translate(0,-5px) rotate(-45deg);transform-origin:center}
+
+.mnav{position:fixed;inset:0;z-index:45;background:var(--hero-bg);color:var(--hero-fg);
+ display:flex;flex-direction:column;justify-content:center;gap:.2rem;
+ padding:calc(var(--head) + env(safe-area-inset-top,0px) + 2rem) var(--gl) 2rem;
+ background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),
+                  linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);
+ background-size:56px 56px}
+.mnav[hidden]{display:none}
+.mnav a{font:600 clamp(1.8rem,9vw,2.6rem)/1.25 var(--font-display);letter-spacing:-.03em;
+ text-decoration:none;color:var(--hero-fg);padding:.45rem 0;display:flex;align-items:baseline;gap:1rem;
+ border-bottom:1px solid var(--hero-line)}
+.mnav a span{font:500 .7rem var(--font-mono);letter-spacing:.1em;color:var(--accent-hi)}
+.mnav a:last-of-type{border-bottom:0}
+.mnav .mnav-foot{margin-top:2rem;display:flex;flex-direction:column;gap:.35rem}
+.mnav .mnav-foot a{font:500 1rem var(--font-body);letter-spacing:0;border:0;padding:.1rem 0;color:var(--hero-muted)}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+@keyframes mitem{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.mnav:not([hidden]){animation:mfade .3s var(--ease) both}
+.mnav:not([hidden]) a{animation:mitem .5s var(--ease) both;animation-delay:calc(60ms + var(--mi,0)*55ms)}
+
+@media(max-width:760px){.burger{display:inline-flex}}
+@media(min-width:761px){.mnav{display:none!important}}
+
+/* ============================================================
+   17  DESIGN: Nummerierung, Scroll-Hinweis, CTA-Band
+   ============================================================ */
+.sheet{counter-increment:sec}
+main{counter-reset:sec}
+.sheet .wrap>.mono::after{content:counter(sec,decimal-leading-zero);color:var(--muted);
+ font-variant-numeric:tabular-nums;opacity:.75}
+
+.scrollcue{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.4rem;
+ font:500 .68rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+.scrollcue i{display:block;width:1px;height:2.2rem;background:linear-gradient(var(--accent-hi),transparent);
+ animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}
+ 55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+.cta-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+ padding-block:clamp(3rem,6vw,4.5rem)}
+.cta-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cta-band h2{font-size:clamp(1.6rem,3.6vw,2.6rem);font-weight:600;letter-spacing:-.025em;max-width:24ch}
+.cta-band .btn.primary{color:var(--on-accent)}
+@media(max-width:620px){.cta-band .btn{width:100%}}
+
+.drawing{display:block;background:var(--surface)}
+.drawing svg{stroke-linecap:round;stroke-linejoin:round}
+.dark .drawing{background:color-mix(in srgb,var(--hero-surface) 70%,transparent)}
+
+.mailto-row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-top:.2rem}
+
+#impressum,#datenschutz{content-visibility:auto;contain-intrinsic-size:auto 620px}
+
+@media(hover:none){.services:hover li:not(:hover){opacity:1}}
+
+@media(prefers-reduced-motion:reduce){.scrollcue i{animation:none;transform:scaleY(1)}}
+
+/* ============================================================
+   18  REFERENZEN ZUM AUSKLAPPEN
+   ============================================================ */
+.refs{margin-top:.6rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.refs>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.6rem 1.2rem;flex-wrap:wrap;
+ padding:1.35rem .3rem;transition:color .4s var(--ease)}
+.refs>summary::-webkit-details-marker{display:none}
+.refs>summary::marker{content:""}
+@media(hover:hover){.refs>summary:hover{color:var(--accent-text)}
+ .refs>summary:hover .chev{border-color:var(--accent-text)}}
+.refs-t{font-size:clamp(1.08rem,2.2vw,1.32rem);font-weight:600;letter-spacing:-.015em}
+.refs-n{margin-left:auto;white-space:nowrap}
+.chev{flex:none;width:1.6rem;height:1.6rem;position:relative;border:1px solid var(--line);
+ transition:border-color .4s var(--ease),transform .55s var(--ease-soft)}
+.chev::before,.chev::after{content:"";position:absolute;background:var(--accent-text);
+ transition:opacity .4s var(--ease),transform .55s var(--ease-soft)}
+.chev::before{left:.38rem;right:.38rem;top:50%;height:1px}
+.chev::after{top:.38rem;bottom:.38rem;left:50%;width:1px}
+.refs[open]>summary .chev{transform:rotate(180deg);border-color:var(--accent-text)}
+.refs[open]>summary .chev::after{opacity:0;transform:scaleY(.2)}
+.refs-slot{overflow:hidden}
+.refs-in{padding:.2rem .3rem 1.8rem;display:flex;flex-direction:column;gap:2.2rem}
+.refgrp h4{margin:0;display:flex;align-items:baseline;gap:.8rem;
+ font:500 .72rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text);
+ padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+.refgrp h4 span{margin-left:auto;color:var(--muted);font-weight:400;letter-spacing:.06em}
+.refgrp ul{list-style:none;margin:0;padding:0}
+.refgrp li{display:grid;grid-template-columns:5.6rem minmax(0,1fr) minmax(0,13.5rem);
+ gap:.15rem 1.2rem;align-items:baseline;padding:.7rem .4rem;
+ border-bottom:1px solid var(--line);transition:background .35s var(--ease)}
+.refgrp li:last-child{border-bottom:0}
+@media(hover:hover){.refgrp li:hover{background:var(--surface)}}
+.refgrp li b{font-weight:500;font-size:.88rem;color:var(--accent-text);font-variant-numeric:tabular-nums;
+ white-space:nowrap}
+.rt{font-size:.97rem}
+.rr{font:500 .68rem var(--font-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+ text-align:right}
+@media(max-width:820px){
+ .refgrp li{grid-template-columns:5.2rem minmax(0,1fr)}
+ .rr{grid-column:2;text-align:left;padding-top:.1rem}
+}
+@media(max-width:430px){
+ .refgrp li{grid-template-columns:minmax(0,1fr)}
+ .rr,.refgrp li b{grid-column:1}
+}
+
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+
+@media(prefers-reduced-motion:reduce){.refs-slot{height:auto!important}}
+
+/* ============================================================
+   19  KORNUNG
+   ============================================================ */
+body::after{content:"";position:fixed;inset:0;z-index:38;pointer-events:none;opacity:var(--grain-o);
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+ background-size:140px 140px;mix-blend-mode:overlay}
+</style>
+</head>
+
+<body id="top">
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark" aria-hidden="true"></span>
+      <span>M.Grimm <span class="sub">Consult</span></span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#ueber">Über mich</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#arbeitsweise">Arbeitsweise</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="head-tools">
+      <button class="iconbtn theme" type="button" id="theme-btn" aria-label="Zwischen hellem und dunklem Erscheinungsbild wechseln">
+        <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+        <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+      </button>
+      <button class="iconbtn burger" type="button" id="burger" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="mobile-nav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line class="l1" x1="4" y1="7" x2="20" y2="7"/><line class="l2" x1="4" y1="12" x2="20" y2="12"/><line class="l3" x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<nav class="mnav" id="mobile-nav" aria-label="Navigation" hidden>
+  <a href="#ueber"        style="--mi:0"><span>01</span>Über mich</a>
+  <a href="#leistungen"   style="--mi:1"><span>02</span>Leistungen</a>
+  <a href="#portfolio"    style="--mi:2"><span>03</span>Portfolio</a>
+  <a href="#arbeitsweise" style="--mi:3"><span>04</span>Arbeitsweise</a>
+  <a href="#kontakt"      style="--mi:4"><span>05</span>Kontakt</a>
+  <div class="mnav-foot">
+    <a href="tel:+491716155922">0171 6155922</a>
+    <a href="mailto:kontakt@mgrimm-consult.de">kontakt@mgrimm-consult.de</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero bleed">
+    <div class="blueprint" aria-hidden="true"><div class="plan"></div></div>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="mono eyebrow rise" style="--d:100">Konstruktion · Projektleitung · Fertigung</p>
+        <h1 class="rise" style="--d:220">Konstruiert, damit Entwürfe gebaut werden können.</h1>
+        <p class="lead rise" style="--d:360">Ich entwickle konstruktive Lösungen für Architektur, Design, Maschinen- und Anlagenbau und führe Projekte vom Entwurf bis zur Montage. Über 37 Jahre Erfahrung, weit über 500 Projekte.</p>
+        <div class="cta-row rise" style="--d:500">
+          <a class="btn primary magnetic" href="#kontakt">Projekt besprechen</a>
+          <a class="btn ghost magnetic" href="#portfolio">Projekte ansehen</a>
+        </div>
+        <p class="scrollcue rise" style="--d:760" aria-hidden="true"><i></i>Weiter nach unten</p>
+      </div>
+      <div class="titleblock rise" style="--d:650;grid-column:1/-1">
+        <div><span class="mono">Tätigkeit</span><b>Diplom-Ingenieur Maschinenbau</b></div>
+        <div><span class="mono">Region</span><b>Deutschsprachiger Raum</b></div>
+        <div><span class="mono">Leistungsbild</span><b>Konstruktion · Projektleitung</b></div>
+        <div><span class="mono">Sprache</span><b>Deutsch</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ÜBER MICH ===================== -->
+  <section class="sheet" id="ueber">
+    <div class="wrap">
+      <p class="mono">Über mich</p>
+      <div class="body">
+        <h2>Technik, die zum Entwurf passt.</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Mein Name ist Michael Grimm, Diplom-Ingenieur Maschinenbau. Seit über 37 Jahren arbeite ich an der Schnittstelle zwischen Entwurf und Fertigung: dort, wo aus einer Idee eine Zeichnung wird und aus der Zeichnung ein Bauteil.</p>
+            <p>Weit über 500 Projekte in Konstruktion, Kalkulation, Projektleitung, Automatisierung und Fertigung. Die Projekte kommen aus Architektur, Kunst, Maschinenbau, Anlagenbau und Röntgentechnologie. Je nach Aufgabenstellung arbeite ich mit unterschiedlichen Werkzeugen und Methoden, immer mit dem Ziel einer Lösung, die sich auch bauen lässt.</p>
+          </div>
+          <div class="portrait" role="img" aria-label="Platzhalter für ein Porträtfoto">
+            <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="var(--line)" stroke-width="1">
+              <path d="M0 300H300M0 330H300M60 0V375M120 0V375M180 0V375M240 0V375"/>
+              <circle cx="150" cy="140" r="52" stroke="var(--muted)"/>
+              <path d="M62 300C62 235 100 205 150 205C200 205 238 235 238 300" stroke="var(--muted)"/>
+            </g></svg>
+            <span class="mono">Porträt · Platzhalter</span>
+          </div>
+        </div>
+        <div class="facts">
+          <div><b data-count="37" data-suffix="+">37+</b><span>Jahre Berufserfahrung</span></div>
+          <div><b data-count="500" data-suffix="+">500+</b><span>Projekte</span></div>
+          <div><b data-count="5">5</b><span>Branchen: Architektur, Kunst, Maschinenbau, Anlagenbau, Röntgentechnologie</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEISTUNGEN (AKKORDEON) ===================== -->
+  <section class="sheet" id="leistungen">
+    <div class="wrap">
+      <p class="mono">Leistungen</p>
+      <div class="body">
+        <h2>Vier Leistungen, ein Ansprechpartner.</h2>
+        <p class="note">Jeden Punkt antippen oder anklicken, um Details und Leistungsumfang zu sehen.</p>
+
+        <ul class="acc" id="acc-leistungen" role="list">
+
+          <li class="acc-item" id="svc-1">
+            <h3 class="acc-head">
+              <button class="acc-trigger" id="svc-1-trigger" type="button"
+                aria-expanded="false" aria-controls="svc-1-panel">
+                <span class="acc-num mono" aria-hidden="true">01</span>
+                <span class="acc-ttl">
+                  <span class="acc-title">Konstruktion für Architektur und Design</span>
+                  <span class="acc-sub">Entwürfe von Architekten und Designern konstruktiv umsetzen, von der Statik bis zur Montage.</span>
+                </span>
+                <span class="acc-ico" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="svc-1-panel" role="region" aria-labelledby="svc-1-trigger">
+              <div class="acc-panel-in">
+                <!-- Platzhaltertext: bitte vor Veröffentlichung prüfen/ersetzen -->
+                <p>Ich übersetze gestalterische Entwürfe in konstruktiv tragfähige, fertigungsgerechte Lösungen: von der ersten Skizze über die Ausschreibung bis zur freigegebenen Fertigungsunterlage. Dabei stimme ich mich eng mit Tragwerksplanung, Fertigungsbetrieben und Montageteams ab.</p>
+                <ul class="acc-points">
+                  <li>Konstruktive Durcharbeitung von Geländern, Decken, Treppen, Fassadenelementen und Skulpturen</li>
+                  <li>Abstimmung mit Statik, Tragwerksplanung und ausführenden Betrieben</li>
+                  <li>Fertigungs- und Montageunterlagen inklusive Stückliste</li>
+                  <li>Unterstützung bei Ausschreibung und Angebotsvergleich</li>
+                </ul>
+                <a class="btn ghost small magnetic" href="#kontakt" data-service="Konstruktion für Architektur und Design">Projekt zu dieser Leistung anfragen</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="acc-item" id="svc-2">
+            <h3 class="acc-head">
+              <button class="acc-trigger" id="svc-2-trigger" type="button"
+                aria-expanded="false" aria-controls="svc-2-panel">
+                <span class="acc-num mono" aria-hidden="true">02</span>
+                <span class="acc-ttl">
+                  <span class="acc-title">Konstruktion im Maschinen- und Anlagenbau</span>
+                  <span class="acc-sub">Konstruktive Lösungen für Kundenentwürfe, von der Baugruppe bis zur Sondermaschine.</span>
+                </span>
+                <span class="acc-ico" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="svc-2-panel" role="region" aria-labelledby="svc-2-trigger">
+              <div class="acc-panel-in">
+                <!-- Platzhaltertext: bitte vor Veröffentlichung prüfen/ersetzen -->
+                <p>Für Maschinen- und Anlagenbauer entwickle ich konstruktive Lösungen vom Konzept bis zur Serienreife. Kalkulation und Fertigungsunterlagen liefere ich so, dass Angebot, Konstruktion und Fertigung zusammenpassen.</p>
+                <ul class="acc-points">
+                  <li>Konstruktion von Baugruppen bis zur kompletten Sondermaschine</li>
+                  <li>Kalkulation von Aufwand, Material und Fertigungskosten</li>
+                  <li>Vollständige Fertigungsunterlagen mit Zeichnungen, Stücklisten und Toleranzen</li>
+                  <li>Abstimmung mit Automatisierung und Steuerungstechnik</li>
+                  <li>Unterstützung bei Abnahme und Inbetriebnahme</li>
+                </ul>
+                <a class="btn ghost small magnetic" href="#kontakt" data-service="Konstruktion im Maschinen- und Anlagenbau">Projekt zu dieser Leistung anfragen</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="acc-item" id="svc-3">
+            <h3 class="acc-head">
+              <button class="acc-trigger" id="svc-3-trigger" type="button"
+                aria-expanded="false" aria-controls="svc-3-panel">
+                <span class="acc-num mono" aria-hidden="true">03</span>
+                <span class="acc-ttl">
+                  <span class="acc-title">Projektleitung von Anfang bis Ende</span>
+                  <span class="acc-sub">Vom Entwurf über Fertigung und Lieferung bis zur Montage, mit Blick auf Termine, Kosten und Qualität.</span>
+                </span>
+                <span class="acc-ico" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="svc-3-panel" role="region" aria-labelledby="svc-3-trigger">
+              <div class="acc-panel-in">
+                <!-- Platzhaltertext: bitte vor Veröffentlichung prüfen/ersetzen -->
+                <p>Als zentraler Ansprechpartner steuere ich Ihr Projekt über alle Phasen hinweg: Ich koordiniere Entwurf, Fertigung, Lieferung und Montage und behalte Termine, Kosten und Qualität durchgehend im Blick.</p>
+                <ul class="acc-points">
+                  <li>Steuerung von Terminen, Kosten und Qualität über alle Projektphasen</li>
+                  <li>Koordination zwischen Entwurf, Fertigung, Lieferung und Montage</li>
+                  <li>Zentraler Ansprechpartner für Auftraggeber und ausführende Betriebe</li>
+                  <li>Laufende Dokumentation des Projektfortschritts</li>
+                </ul>
+                <a class="btn ghost small magnetic" href="#kontakt" data-service="Projektleitung von Anfang bis Ende">Projekt zu dieser Leistung anfragen</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="acc-item" id="svc-4">
+            <h3 class="acc-head">
+              <button class="acc-trigger" id="svc-4-trigger" type="button"
+                aria-expanded="false" aria-controls="svc-4-panel">
+                <span class="acc-num mono" aria-hidden="true">04</span>
+                <span class="acc-ttl">
+                  <span class="acc-title">Suche und Einbindung von Lieferanten</span>
+                  <span class="acc-sub">Passende Fertigungsbetriebe finden, Angebote prüfen, Technik und Zeitplan zusammenführen.</span>
+                </span>
+                <span class="acc-ico" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="svc-4-panel" role="region" aria-labelledby="svc-4-trigger">
+              <div class="acc-panel-in">
+                <!-- Platzhaltertext: bitte vor Veröffentlichung prüfen/ersetzen -->
+                <p>Ich finde Fertigungsbetriebe, die technisch zur Aufgabe passen, prüfe deren Angebote fachlich und binde sie so in den Projektplan ein, dass Qualität und Termine zusammenpassen.</p>
+                <ul class="acc-points">
+                  <li>Identifikation geeigneter Fertigungsbetriebe nach technischer Eignung</li>
+                  <li>Technische Prüfung und Vergleich von Angeboten</li>
+                  <li>Abstimmung von Lieferterminen mit dem Gesamtprojektplan</li>
+                  <li>Begleitung der Qualitätssicherung während der Fertigung</li>
+                </ul>
+                <a class="btn ghost small magnetic" href="#kontakt" data-service="Suche und Einbindung von Lieferanten">Projekt zu dieser Leistung anfragen</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PORTFOLIO ===================== -->
+  <section class="sheet dark glow bleed" id="portfolio">
+    <div class="wrap">
+      <p class="mono">Portfolio</p>
+      <div class="body">
+        <h2>Ausgewählte Projekte.</h2>
+        <div class="projects">
+
+          <article class="project">
+            <figure>
+              <div class="drawing">
+                <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Schematischer Saalschnitt mit abgehängten Schallsegeln"><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M0 60h800M0 120h800M0 180h800M0 240h800M0 300h800M0 360h800M0 420h800M60 0v500M120 0v500M180 0v500M240 0v500M300 0v500M360 0v500M420 0v500M480 0v500M540 0v500M600 0v500M660 0v500M720 0v500"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M70 110h660M70 110v300M730 110v300M70 410h660"/><path d="M70 410l120 44h420l120-44"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M150 170q110 58 220 0M210 215q110 58 220 0M370 170q110 58 220 0M430 215q110 58 220 0"/></g><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M260 110v46M320 110v62M480 110v46M540 110v62M200 110v74M620 110v74"/></g><g fill="none" stroke="var(--accent-hi)" stroke-width="1.2"><path d="M70 86h660M70 78v16M730 78v16M44 110v300M36 110h16M36 410h16"/><path d="M150 150h-30M150 142v16"/></g><g font-family="Poppins,Arial,sans-serif" font-size="13" fill="var(--accent-hi)" letter-spacing="1.5"><text x="400" y="74" text-anchor="middle">RASTER 56</text><text x="30" y="266" transform="rotate(-90 30 266)" text-anchor="middle">H = 300</text><text x="400" y="466" text-anchor="middle">SAALSCHNITT · SCHALLSEGEL</text></g></svg>
+              </div>
+              <figcaption>
+                <p class="mono meta"><time datetime="1990">1990</time><span>Akustik · Innenausbau</span></p>
+                <h3>Schallsegeldecke Liederhalle, Stuttgart</h3>
+                <p>Konstruktion und Projektleitung der Schallsegeldecke im Kultur- und Kongresszentrum Liederhalle.</p>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project">
+            <figure>
+              <div class="drawing">
+                <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Schematische Ansicht einer Treppenanlage mit Podest"><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M0 60h800M0 120h800M0 180h800M0 240h800M0 300h800M0 360h800M0 420h800M60 0v500M120 0v500M180 0v500M240 0v500M300 0v500M360 0v500M420 0v500M480 0v500M540 0v500M600 0v500M660 0v500M720 0v500"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M120 400h46v-32M166 368h46v-32M212 336h46v-32M258 304h46v-32M304 272h46v-32M350 240h46v-32M396 208h46v-32M442 176h46v-32M488 144h46v-32"/><path d="M120 400L534 112M120 432L534 144M120 400v32M534 112v32"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M534 112h150v22h-150M684 112v22"/><path d="M120 400H60v22h60"/></g><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M60 90h640M120 90v310M534 90v22M684 90v22"/><path d="M120 112h414"/></g><g fill="none" stroke="var(--accent-hi)" stroke-width="1.2"><path d="M90 400v-288M82 400h16M82 112h16"/><path d="M120 460h414M120 452v16M534 452v16"/></g><g font-family="Poppins,Arial,sans-serif" font-size="13" fill="var(--accent-hi)" letter-spacing="1.5"><text x="74" y="256" transform="rotate(-90 74 256)" text-anchor="middle">STEIGUNG</text><text x="327" y="482" text-anchor="middle">LAUFLÄNGE · 9 x 32 / 46</text><text x="612" y="104" text-anchor="middle">PODEST</text></g></svg>
+              </div>
+              <figcaption>
+                <p class="mono meta"><time datetime="1999">1999</time><span>Hochbau · Stahlbau</span></p>
+                <h3>Treppenanlagen Main Tower, Frankfurt</h3>
+                <p>Konstruktion und Projektleitung der Treppenanlagen im Main Tower, 200 Meter Höhe, Fertigstellung 1999.</p>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project">
+            <figure>
+              <div class="drawing">
+                <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Schematischer Grundriss und Aufriss einer Wendeltreppe"><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M0 60h800M0 120h800M0 180h800M0 240h800M0 300h800M0 360h800M0 420h800M60 0v500M120 0v500M180 0v500M240 0v500M300 0v500M360 0v500M420 0v500M480 0v500M540 0v500M600 0v500M660 0v500M720 0v500"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="220" cy="250" r="130"/><circle cx="220" cy="250" r="28"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M248 250 L350 250 M246 261 L340 300 M240 270 L312 342 M231 276 L270 370 M220 278 L220 380 M209 276 L170 370 M200 270 L128 342 M194 261 L100 300 M192 250 L90 250 M194 239 L100 200 M200 230 L128 158 M209 224 L170 130 M220 222 L220 120 M231 224 L270 130 M240 230 L312 158 M246 239 L340 200"/></g><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><circle cx="220" cy="250" r="79"/><path d="M90 250h260M220 120v260"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M600 400 L630 383 L655 366 L672 349 L678 332 L672 315 L655 298 L630 281 L600 264 L570 247 L545 230 L528 213 L522 196 L528 179 L545 162 L570 145 L600 128"/><path d="M600 400v-290M522 400h156"/></g><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M522 110h156M522 110v290M678 110v290"/><path d="M522 158h156M522 206h156M522 254h156M522 302h156M522 350h156"/></g><g fill="none" stroke="var(--accent-hi)" stroke-width="1.2"><path d="M220 250l130 0M220 250l92-92"/><path d="M700 110v290M692 110h16M692 400h16"/></g><g font-family="Poppins,Arial,sans-serif" font-size="13" fill="var(--accent-hi)" letter-spacing="1.5"><text x="290" y="242" text-anchor="middle">R</text><text x="716" y="260" transform="rotate(-90 716 260)" text-anchor="middle">GESCHOSSHÖHE</text><text x="220" y="412" text-anchor="middle">GRUNDRISS</text><text x="600" y="430" text-anchor="middle">AUFRISS</text></g></svg>
+              </div>
+              <figcaption>
+                <p class="mono meta"><time datetime="2015">2015</time><span>Hochbau · Stahlbau</span></p>
+                <h3>Wendeltreppe Tower 185, Frankfurt</h3>
+                <p>Konstruktion der freitragenden Wendeltreppe im Hochhaus Tower 185.</p>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project">
+            <figure>
+              <div class="drawing">
+                <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Schematischer Bühnenaufriss mit Portal und schiefer Ebene"><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M0 60h800M0 120h800M0 180h800M0 240h800M0 300h800M0 360h800M0 420h800M60 0v500M120 0v500M180 0v500M240 0v500M300 0v500M360 0v500M420 0v500M480 0v500M540 0v500M600 0v500M660 0v500M720 0v500"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M80 100h640v300H80z"/><path d="M170 160h460v200H170z"/></g><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M170 360l180-120h280M350 240v120M630 240v120"/><path d="M170 300h180"/></g><g fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><path d="M200 160v200M260 160v200M320 160v200M440 160v200M500 160v200M560 160v200"/><path d="M170 200h460M170 240h180"/></g><g fill="none" stroke="var(--accent-hi)" stroke-width="1.2"><path d="M80 76h640M80 68v16M720 68v16"/><path d="M146 160v200M138 160h16M138 360h16"/><path d="M350 392h280M350 384v16M630 384v16"/></g><g font-family="Poppins,Arial,sans-serif" font-size="13" fill="var(--accent-hi)" letter-spacing="1.5"><text x="400" y="64" text-anchor="middle">PORTALBREITE</text><text x="130" y="260" transform="rotate(-90 130 260)" text-anchor="middle">PORTAL H</text><text x="490" y="412" text-anchor="middle">SCHIEFE EBENE</text><text x="400" y="466" text-anchor="middle">BÜHNENAUFRISS</text></g></svg>
+              </div>
+              <figcaption>
+                <p class="mono meta"><time datetime="2003">2003</time><span>Bühnentechnik</span></p>
+                <h3>Bühnenbild Tristan und Isolde, Mannheim</h3>
+                <p>Konstruktion und Projektleitung des Bühnenbildes für die Inszenierung am Nationaltheater Mannheim.</p>
+              </figcaption>
+            </figure>
+          </article>
+
+        </div>
+        <p class="note">Die Zeichnungen sind schematische Prinzipdarstellungen und geben das konstruktive Thema des jeweiligen Projekts wieder. Ausführungspläne und Projektfotos werden nicht veröffentlicht. Eigene Projektfotos können die Zeichnungen jederzeit ersetzen.</p>
+
+        <details class="refs" id="refs">
+          <summary>
+            <span class="refs-t">Weitere Referenzen</span>
+            <span class="refs-n mono">32 Projekte · seit 1990</span>
+            <span class="chev" aria-hidden="true"></span>
+          </summary>
+          <div class="refs-slot">
+            <div class="refs-in">
+          <div class="refgrp">
+            <h4>1990 – 1999<span>9 Projekte</span></h4>
+            <ul role="list">
+              <li><b>1990</b><span class="rt">Brüstung und Decke, Schauspielhaus / Oper Frankfurt</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>1990</b><span class="rt">Schallsegeldecke, Liederhalle Stuttgart</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>1991</b><span class="rt">U-Bahnstation Äußere Kanalstraße, Köln</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>1991</b><span class="rt">Geländer und Decken, Fürstenhof Frankfurt</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>1993</b><span class="rt">Edelstahl-Attika, Hotel Pullman Luxemburg</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>1994</b><span class="rt">Kühldecken, Südwest LB</span><span class="rr">Konstruktion</span></li>
+              <li><b>1994–2010</b><span class="rt">Diverse Elemente, Flughafen Frankfurt Terminal 1 und 2</span><span class="rr">Konstruktion</span></li>
+              <li><b>1999</b><span class="rt">Treppenanlagen, Main Tower Frankfurt</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>1999–2001</b><span class="rt">Fernbahnhof Frankfurt</span><span class="rr">Konstruktion · Projektleitung</span></li>
+            </ul>
+          </div>
+          <div class="refgrp">
+            <h4>2000 – 2009<span>8 Projekte</span></h4>
+            <ul role="list">
+              <li><b>2003</b><span class="rt">Bühnenbild Tristan und Isolde, Mannheim</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2004</b><span class="rt">Landungssteg am Neckar, Ladenburg</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2006</b><span class="rt">Kreisel Ingelheim</span><span class="rr">Konstruktion</span></li>
+              <li><b>2006</b><span class="rt">EKZ Alstertal, Hamburg</span><span class="rr">Konstruktion</span></li>
+              <li><b>2006</b><span class="rt">Figure balancing on Dog, New York</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2006</b><span class="rt">Westhafengeländer, Frankfurt</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2007</b><span class="rt">Gefaltetes Quadrat, Ritter Museum</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2008</b><span class="rt">Flusswächter, Lünen</span><span class="rr">Konstruktion · Projektleitung</span></li>
+            </ul>
+          </div>
+          <div class="refgrp">
+            <h4>ab 2010<span>15 Projekte</span></h4>
+            <ul role="list">
+              <li><b>2010</b><span class="rt">Sphäre, Frankfurt</span><span class="rr">Konstruktion</span></li>
+              <li><b>2010</b><span class="rt">Lichtfossil, Bottrop</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2011</b><span class="rt">Crossbanner, Flughafen Frankfurt</span><span class="rr">Konstruktion</span></li>
+              <li><b>2011</b><span class="rt">Test- und Rüststand für Windkraftgetriebe, Bad Homburg</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2012</b><span class="rt">Ringskulptur, Wetzlar</span><span class="rr">Konstruktion</span></li>
+              <li><b>2012</b><span class="rt">Split Rocker Skulptur, Basel</span><span class="rr">Konstruktion</span></li>
+              <li><b>2013–2024</b><span class="rt">Entwicklung Farbmessung und Rezeptierung</span><span class="rr">Projektleitung</span></li>
+              <li><b>2015</b><span class="rt">Wendeltreppe Tower 185, Frankfurt</span><span class="rr">Konstruktion</span></li>
+              <li><b>2015</b><span class="rt">BASF Business Center, Ludwigshafen</span><span class="rr">Konstruktion</span></li>
+              <li><b>2016</b><span class="rt">Welle, Frankfurt</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2016</b><span class="rt">Einführung Kraftformer für 3D-Blechumformung</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2016</b><span class="rt">Entwicklung Rohraushalsungen</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2017–2018</b><span class="rt">Mirror, Seoul</span><span class="rr">Konstruktion</span></li>
+              <li><b>2019</b><span class="rt">Entwicklung Röntgen-Gantry</span><span class="rr">Konstruktion · Projektleitung</span></li>
+              <li><b>2022</b><span class="rt">Einführung superplastische Formen</span><span class="rr">Konstruktion · Projektleitung</span></li>
+            </ul>
+          </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ARBEITSWEISE ===================== -->
+  <section class="sheet" id="arbeitsweise">
+    <div class="wrap">
+      <p class="mono">Arbeitsweise</p>
+      <div class="body">
+        <h2>Vom Entwurf bis zur Montage.</h2>
+        <ol class="steps" role="list">
+          <li><h3>Erstgespräch</h3><p>Wir klären Aufgabe, Rahmen und Termine. Das erste Gespräch ist unverbindlich.</p></li>
+          <li><h3>Konstruktion</h3><p>Ich entwickle die technische Lösung und wähle die Werkzeuge passend zur Aufgabenstellung.</p></li>
+          <li><h3>Fertigung und Lieferanten</h3><p>Ich suche geeignete Betriebe, prüfe Angebote und begleite die Fertigung.</p></li>
+          <li><h3>Montage und Übergabe</h3><p>Ich führe das Projekt bis zur Montage vor Ort und zur Übergabe an den Auftraggeber.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAKT ===================== -->
+  <section class="sheet" id="kontakt">
+    <div class="wrap">
+      <p class="mono">Kontakt</p>
+      <div class="body">
+        <h2>Schildern Sie mir Ihre Aufgabe.</h2>
+        <div class="contact-grid">
+
+          <form id="contact-form" novalidate data-endpoint="">
+            <div class="row2">
+              <div class="field">
+                <label for="f-name">Name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="f-mail">E-Mail</label>
+                <input id="f-mail" name="email" type="email" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-service">Betreffende Leistung</label>
+              <select id="f-service" name="service">
+                <option value="">Bitte auswählen (optional)</option>
+                <option value="Konstruktion für Architektur und Design">01 · Konstruktion für Architektur und Design</option>
+                <option value="Konstruktion im Maschinen- und Anlagenbau">02 · Konstruktion im Maschinen- und Anlagenbau</option>
+                <option value="Projektleitung von Anfang bis Ende">03 · Projektleitung von Anfang bis Ende</option>
+                <option value="Suche und Einbindung von Lieferanten">04 · Suche und Einbindung von Lieferanten</option>
+                <option value="Sonstiges / Allgemeine Anfrage">Sonstiges / Allgemeine Anfrage</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg">Nachricht</label>
+              <textarea id="f-msg" name="message" required></textarea>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="f-firma">Firma</label>
+              <input id="f-firma" name="firma" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <label class="check">
+              <input type="checkbox" id="f-consent" name="consent" required>
+              <span><span>Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden.</span> <a href="#datenschutz">Datenschutz</a></span>
+            </label>
+            <button class="btn primary magnetic" type="submit">Anfrage vorbereiten</button>
+            <p class="form-error" id="form-error" role="alert"></p>
+          </form>
+
+          <div>
+            <dl class="details">
+              <div>
+                <dt class="mono">Telefon</dt>
+                <dd class="copy-line"><a href="tel:+491716155922" id="tel-value">0171 6155922</a>
+                  <button type="button" class="copy-btn" data-copy="#tel-value">Kopieren</button></dd>
+              </div>
+              <div>
+                <dt class="mono">E-Mail</dt>
+                <dd class="copy-line"><a href="mailto:kontakt@mgrimm-consult.de" id="mail-value">kontakt@mgrimm-consult.de</a>
+                  <button type="button" class="copy-btn" data-copy="#mail-value">Kopieren</button></dd>
+              </div>
+              <div>
+                <dt class="mono">Standort</dt>
+                <dd>Hohlstraße 11, 61250 Usingen</dd>
+              </div>
+              <div>
+                <dt class="mono">Erreichbar</dt>
+                <dd>jederzeit, Anfragen beantworte ich persönlich</dd>
+              </div>
+            </dl>
+            <p class="note" style="margin-top:1.4rem">Hinweis: Die E-Mail-Adresse ist ein Vorschlag auf Basis der Domain mgrimm-consult.de und vor der Veröffentlichung zu bestätigen.</p>
+          </div>
+
+        </div>
+
+        <div class="result" id="result" hidden>
+          <h3>Ihre Nachricht ist vorbereitet.</h3>
+          <p class="note">Diese Seite versendet Formulare nicht selbst. Kopieren Sie den Text und schicken Sie ihn an die E-Mail-Adresse oben.</p>
+          <pre id="result-text"></pre>
+          <div class="result-actions">
+            <a class="copy-btn" id="result-mail" href="mailto:kontakt@mgrimm-consult.de">Im E-Mail-Programm öffnen</a>
+            <button type="button" class="copy-btn" id="result-copy">Text kopieren</button>
+            <span class="status" id="result-status" aria-live="polite"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RECHTLICHES ===================== -->
+  <section class="sheet legal" id="impressum">
+    <div class="wrap">
+      <p class="mono">Impressum</p>
+      <div class="body">
+        <h2>Angaben gemäß § 5 DDG.</h2>
+        <div class="legal-body">
+          <p>M.Grimm Consult, Michael Grimm, Hohlstraße 11, 61250 Usingen, Deutschland. Telefon 0171 6155922, kontakt@mgrimm-consult.de.</p>
+          <p>Berufsbezeichnung: Diplom-Ingenieur Maschinenbau. Eine Mitgliedschaft in einer Architekten- oder Ingenieurkammer besteht nicht. Verantwortlich für den Inhalt: Michael Grimm, Anschrift wie oben.</p>
+          <p>Steuernummer beziehungsweise Umsatzsteuer-Identifikationsnummer: 003 822 61940.</p>
+          <p class="note">Offene Punkte vor der Veröffentlichung: Angabe zur Berufshaftpflichtversicherung (Versicherer und räumlicher Geltungsbereich), Prüfung, ob die genannte Nummer eine Steuernummer oder eine Umsatzsteuer-Identifikationsnummer ist, sowie Bestätigung der E-Mail-Adresse. Der vollständige Impressumstext sollte rechtlich geprüft werden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet legal" id="datenschutz">
+    <div class="wrap">
+      <p class="mono">Datenschutz</p>
+      <div class="body">
+        <h2>Umgang mit Ihren Daten.</h2>
+        <div class="legal-body">
+          <h3>Kontaktformular</h3>
+          <p>Das Formular auf dieser Seite überträgt keine Daten an einen Server. Ihre Eingaben bleiben im Browser und werden lediglich zu einem Text zusammengestellt, den Sie selbst kopieren und per E-Mail versenden. Anfragen werden ausschließlich von Michael Grimm persönlich bearbeitet.</p>
+          <h3>Schriftart</h3>
+          <p>Diese Seite lädt die Schriftart Poppins von Google Fonts. Dabei wird Ihre IP-Adresse an Google übertragen. Für den Produktivbetrieb empfiehlt sich das Einbinden der Schriftdateien vom eigenen Server.</p>
+          <h3>Statistik und Cookies</h3>
+          <p>Es werden keine Cookies zu Analysezwecken gesetzt und keine Tracking-Dienste eingesetzt. Sollten später Statistik- oder weitere Dienste hinzukommen, ist ein Cookie-Hinweis erforderlich.</p>
+          <h3>Bildrechte</h3>
+          <p>Die Abbildungen im Portfolio sind eigens für diese Seite erstellte schematische Zeichnungen. Rechte Dritter werden dadurch nicht berührt. Werden später eigene Projektfotos eingesetzt, sind die Nutzungsrechte für Bauwerk und Aufnahme vorab zu klären.</p>
+          <p class="note">Platzhalter: Diese Hinweise sind vor der Veröffentlichung rechtlich zu prüfen und durch eine vollständige Datenschutzerklärung zu ersetzen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA-BAND ===================== -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Haben Sie einen Entwurf, der gebaut werden soll?</h2>
+      <a class="btn primary magnetic" href="#kontakt">Projekt besprechen</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot dark glow bleed">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top">
+          <span class="mark" aria-hidden="true"></span>
+          <span>M.Grimm <span class="sub">Consult</span></span>
+        </a>
+        <p class="claim">Sprechen wir über Ihr Projekt.</p>
+      </div>
+      <a class="totop" href="#top"><span aria-hidden="true">&#8593;</span><span>Nach oben</span></a>
+    </div>
+    <div class="foot-legal mono">
+      <span>&copy; 2026 M.Grimm Consult</span>
+      <span><a href="#impressum">Impressum</a> &middot; <a href="#datenschutz">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"M.Grimm Consult",
+"description":"Konstruktion, Projektleitung und Lieferantenauswahl für Architektur, Kunst, Maschinenbau, Anlagenbau und Röntgentechnologie.",
+"founder":{"@type":"Person","name":"Michael Grimm","jobTitle":"Diplom-Ingenieur Maschinenbau"},
+"areaServed":"DE","availableLanguage":["de"],
+"address":{"@type":"PostalAddress","streetAddress":"Hohlstraße 11","postalCode":"61250","addressLocality":"Usingen","addressCountry":"DE"},
+"email":"kontakt@mgrimm-consult.de","telephone":"+49 171 6155922","url":"https://mgrimm-consult.de"}
+</script>
+
+<script>
+(function(){
+"use strict";
+var root=document.documentElement,
+    reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,
+    hasIO="IntersectionObserver" in window,
+    canHover=matchMedia("(hover: hover)").matches;
+if(!reduce && hasIO) root.classList.add("js");
+
+var header=document.querySelector(".site-header"),
+    hero=document.querySelector(".hero"),
+    steps=document.querySelector(".steps"),
+    themeMeta=document.querySelector("meta[name=theme-color]");
+
+function clamp(v,a,b){return v<a?a:(v>b?b:v);}
+
+var ticking=false, pItems=[], parallaxOn=false,
+    mVH=1, mVW=1, mHeroH=0, mHeadH=0, mMax=1, lastPast=null, lastTheme="";
+
+function measure(){
+  mVH=window.innerHeight||1; mVW=window.innerWidth||1;
+  mHeroH=hero?hero.offsetHeight:0;
+  mHeadH=header?header.offsetHeight:0;
+  mMax=Math.max(1, root.scrollHeight-mVH);
+}
+function schedule(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+var syCur=0, again=false;
+function frame(){
+  ticking=false; again=false;
+  var y=window.pageYOffset||root.scrollTop||0;
+  if(header) header.style.setProperty("--p", Math.min(1,y/mMax).toFixed(4));
+  var past=y > mHeroH-mHeadH;
+  if(past!==lastPast){
+    lastPast=past;
+    root.classList.toggle("past-hero", past);
+    if(themeMeta){
+      var cs=getComputedStyle(root),
+          c=(past?cs.getPropertyValue("--bg"):cs.getPropertyValue("--hero-bg")).trim()||"#ffffff";
+      if(c!==lastTheme){ lastTheme=c; themeMeta.setAttribute("content",c); }
+    }
+  }
+  if(!reduce && hero && y<=mHeroH+200){
+    var st=Math.min(y,mHeroH);
+    if(Math.abs(st-syCur)>0.4){ syCur+=(st-syCur)*0.14; again=true; } else { syCur=st; }
+    root.style.setProperty("--sy", syCur.toFixed(2));
+  }
+  stepsProgress(); parallax();
+  if(again) schedule();
+}
+
+function stepsProgress(){
+  if(!steps) return;
+  var r=steps.getBoundingClientRect(),
+      p=(mVH*0.85-r.top)/(r.height+mVH*0.1);
+  steps.style.setProperty("--sp", clamp(p,0,1).toFixed(3));
+}
+
+function buildParallax(){
+  pItems=[];
+  var portrait=document.querySelector(".portrait");
+  if(portrait) pItems.push({el:portrait,f:0.06,ty:0});
+  Array.prototype.forEach.call(document.querySelectorAll(".project"),function(el,i){
+    pItems.push({el:el,f:(i%2===0?0.05:-0.035),ty:0});
+  });
+}
+function parallax(){
+  if(reduce) return;
+  if(mVW<=680){
+    if(parallaxOn){ pItems.forEach(function(it){ it.ty=0; it.el.style.removeProperty("--ty"); }); parallaxOn=false; }
+    return;
+  }
+  parallaxOn=true;
+  var i,n=pItems.length,it,r,t;
+  for(i=0;i<n;i++){
+    it=pItems[i]; r=it.el.getBoundingClientRect();
+    it._t=r.top; it._h=r.height; it._skip=(r.bottom<-260||r.top>mVH+260);
+  }
+  for(i=0;i<n;i++){
+    it=pItems[i]; if(it._skip) continue;
+    t=clamp((it._t+it._h/2-mVH/2)*it.f,-80,80);
+    if(Math.abs(t-it.ty)>0.25){ it.ty+=(t-it.ty)*0.11; again=true; } else { it.ty=t; }
+    it.el.style.setProperty("--ty", it.ty.toFixed(2));
+  }
+}
+
+if(!reduce && canHover){
+  Array.prototype.forEach.call(document.querySelectorAll(".hero, .glow"),function(el){
+    el.addEventListener("pointermove",function(e){
+      var r=el.getBoundingClientRect();
+      el.style.setProperty("--mx",(e.clientX-r.left)+"px");
+      el.style.setProperty("--my",(e.clientY-r.top)+"px");
+    },{passive:true});
+    el.addEventListener("pointerleave",function(){
+      el.style.setProperty("--mx","-999px"); el.style.setProperty("--my","-999px");
+    });
+  });
+}
+
+if(!reduce && hasIO){
+  var sel=[".sheet .wrap > .mono",".about-text > p",".portrait",".facts > div",".acc-item",
+           ".project",".steps li",".note","#contact-form",".details",".refs",
+           ".legal-body > *",".foot-grid > *",".foot-legal"].join(",");
+  var revealIO=new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el=en.target; el.classList.add("in"); obs.unobserve(el);
+      setTimeout(function(){ el.classList.remove("reveal","in"); el.style.removeProperty("--i"); },1400);
+    });
+  },{rootMargin:"0px 0px -6% 0px",threshold:.1});
+  Array.prototype.forEach.call(document.querySelectorAll(sel),function(el){
+    if(el.closest && el.closest("#result")) return;
+    var parent=el.parentElement, idx=0;
+    if(parent){
+      idx=Array.prototype.indexOf.call(parent.children,el);
+      if(el.classList.contains("project")) idx=idx%2;
+    }
+    el.classList.add("reveal");
+    el.style.setProperty("--i", Math.min(idx,4));
+    revealIO.observe(el);
+  });
+
+  var seenIO=new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var t=en.target.__seenTarget||en.target;
+      t.classList.add("seen"); obs.unobserve(en.target);
+    });
+  },{rootMargin:"0px 0px -10% 0px",threshold:.05});
+  Array.prototype.forEach.call(document.querySelectorAll(".project, .acc, .facts"),function(el){ seenIO.observe(el); });
+  Array.prototype.forEach.call(document.querySelectorAll(".sheet h2"),function(h2){
+    var host=h2.parentElement||h2; host.__seenTarget=h2; seenIO.observe(host);
+  });
+
+  var facts=document.querySelector(".facts");
+  if(facts){
+    var countIO=new IntersectionObserver(function(entries,obs){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        obs.disconnect();
+        Array.prototype.forEach.call(facts.querySelectorAll("[data-count]"),function(el,idx){
+          var target=parseInt(el.getAttribute("data-count"),10)||0,
+              suffix=el.getAttribute("data-suffix")||"",
+              dur=2800, delay=idx*200, t0=0;
+          el.textContent="0"+suffix;
+          requestAnimationFrame(function step(ts){
+            if(!t0) t0=ts;
+            var k=clamp((ts-t0-delay)/dur,0,1), e=1-Math.pow(1-k,4);
+            el.textContent=Math.round(target*e)+suffix;
+            if(k<1) requestAnimationFrame(step);
+          });
+        });
+      });
+    },{threshold:.4});
+    countIO.observe(facts);
+  }
+}
+
+if(hasIO){
+  var navLinks={};
+  Array.prototype.forEach.call(document.querySelectorAll(".nav a"),function(a){ navLinks[a.getAttribute("href")]=a; });
+  var spyIO=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var link=navLinks["#"+en.target.id];
+      if(!link) return;
+      Object.keys(navLinks).forEach(function(k){
+        navLinks[k].classList.remove("active"); navLinks[k].removeAttribute("aria-current");
+      });
+      link.classList.add("active"); link.setAttribute("aria-current","true");
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  ["ueber","leistungen","portfolio","arbeitsweise","kontakt"].forEach(function(id){
+    var s=document.getElementById(id); if(s) spyIO.observe(s);
+  });
+}
+
+function copyText(txt,done){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){done(true);},function(){done(false);});
+  } else { done(false); }
+}
+Array.prototype.forEach.call(document.querySelectorAll(".copy-btn[data-copy]"),function(btn){
+  btn.addEventListener("click",function(){
+    var el=document.querySelector(btn.getAttribute("data-copy"));
+    if(!el) return;
+    var old=btn.textContent;
+    copyText((el.textContent||"").trim(),function(ok){
+      btn.textContent=ok?"Kopiert":"Bitte manuell kopieren";
+      setTimeout(function(){ btn.textContent=old; },1800);
+    });
+  });
+});
+
+/* "Projekt zu dieser Leistung anfragen": Leistung im Auswahlfeld vorbelegen
+   und zur Kontaktsektion scrollen, bevor der Anker-Sprung erfolgt. */
+var serviceSelect=document.getElementById("f-service");
+if(serviceSelect){
+  Array.prototype.forEach.call(document.querySelectorAll("a[data-service]"),function(a){
+    a.addEventListener("click",function(){
+      var val=a.getAttribute("data-service")||"";
+      Array.prototype.some.call(serviceSelect.options,function(opt){
+        if(opt.value===val){ serviceSelect.value=val; return true; }
+        return false;
+      });
+    });
+  });
+}
+
+var form=document.getElementById("contact-form"),
+    errBox=document.getElementById("form-error"),
+    result=document.getElementById("result"),
+    resText=document.getElementById("result-text"),
+    resCopy=document.getElementById("result-copy"),
+    resStatus=document.getElementById("result-status");
+if(form){
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var fe=form.elements,
+        name=(fe.name && fe.name.value||"").trim(),
+        mail=(fe.email && fe.email.value||"").trim(),
+        service=(fe.service && fe.service.value||"").trim(),
+        msg=(fe.message && fe.message.value||"").trim(),
+        ok=!!(fe.consent && fe.consent.checked);
+    errBox.textContent="";
+    [fe.name,fe.email,fe.message].forEach(function(f){ if(f) f.removeAttribute("aria-invalid"); });
+    if(fe.firma && fe.firma.value) return;   /* Honigtopf: stiller Abbruch */
+    if(!name||!mail||!msg||!ok){
+      errBox.textContent="Bitte Name, E-Mail und Nachricht ausfüllen und die Einwilligung bestätigen.";
+      if(!name && fe.name) fe.name.setAttribute("aria-invalid","true");
+      if(!mail && fe.email) fe.email.setAttribute("aria-invalid","true");
+      if(!msg && fe.message) fe.message.setAttribute("aria-invalid","true");
+      return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)){
+      errBox.textContent="Bitte prüfen Sie die E-Mail-Adresse.";
+      fe.email.setAttribute("aria-invalid","true");
+      return;
+    }
+    var body="Anfrage über mgrimm-consult.de\nVon: "+name+" <"+mail+">\n"+
+      (service?"Betreffende Leistung: "+service+"\n":"")+"\n"+msg;
+    resText.textContent=body;
+    var ml=document.getElementById("result-mail");
+    if(ml) ml.setAttribute("href","mailto:kontakt@mgrimm-consult.de?subject="+
+      encodeURIComponent("Projektanfrage von "+name+(service?" – "+service:""))+"&body="+encodeURIComponent(body));
+    result.hidden=false;
+    result.scrollIntoView({block:"nearest",behavior:"smooth"});
+  });
+}
+if(resCopy){
+  resCopy.addEventListener("click",function(){
+    copyText(resText.textContent,function(ok){
+      resStatus.textContent=ok?"Kopiert":"Bitte manuell kopieren";
+      setTimeout(function(){ resStatus.textContent=""; },2500);
+    });
+  });
+}
+
+var burger=document.getElementById("burger"),
+    mnav=document.getElementById("mobile-nav"),
+    lastFocus=null;
+function setNav(open){
+  if(!burger||!mnav) return;
+  mnav.hidden=!open;
+  burger.setAttribute("aria-expanded",open?"true":"false");
+  burger.setAttribute("aria-label",open?"Navigation schließen":"Navigation öffnen");
+  document.body.classList.toggle("nav-open",open);
+  if(open){ lastFocus=document.activeElement; var a=mnav.querySelector("a"); if(a) a.focus(); }
+  else if(lastFocus && lastFocus.focus){ lastFocus.focus(); }
+}
+if(burger && mnav){
+  burger.addEventListener("click",function(){ setNav(mnav.hidden); });
+  mnav.addEventListener("click",function(e){ if(e.target.closest("a")) setNav(false); });
+  addEventListener("keydown",function(e){ if(e.key==="Escape" && !mnav.hidden) setNav(false); });
+  matchMedia("(min-width:761px)").addEventListener("change",function(ev){ if(ev.matches) setNav(false); });
+}
+
+var themeBtn=document.getElementById("theme-btn"),
+    sysDark=matchMedia("(prefers-color-scheme: dark)"),
+    storedTheme=null;
+try{ storedTheme=localStorage.getItem("mg-theme"); }catch(e){}
+if(storedTheme!=="light" && storedTheme!=="dark") storedTheme=null;
+function applyTheme(v){
+  root.setAttribute("data-theme", v==="dark"?"dark":"light");
+  lastTheme=""; lastPast=null; measure(); schedule();
+}
+if(themeBtn){
+  themeBtn.addEventListener("click",function(){
+    var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
+    storedTheme=next; applyTheme(next);
+    try{ localStorage.setItem("mg-theme",next); }catch(e){}
+  });
+}
+sysDark.addEventListener("change",function(ev){ if(!storedTheme) applyTheme(ev.matches?"dark":"light"); });
+
+var refsEl=document.querySelector(".refs");
+if(refsEl){
+  var slot=refsEl.querySelector(".refs-slot"),
+      inner=refsEl.querySelector(".refs-in"),
+      sum=refsEl.querySelector("summary"),
+      busy=false,
+      EASE="cubic-bezier(.33,.9,.28,1)";
+  if(!reduce){
+    slot.style.height="0px";
+    sum.addEventListener("click",function(e){
+      e.preventDefault();
+      if(busy) return;
+      busy=true;
+      var open=refsEl.hasAttribute("open"), h=inner.offsetHeight;
+      if(!open){
+        refsEl.setAttribute("open","");
+        h=inner.offsetHeight;
+        slot.style.height="0px";
+        requestAnimationFrame(function(){
+          slot.style.transition="height .62s "+EASE;
+          slot.style.height=h+"px";
+        });
+      } else {
+        slot.style.height=h+"px";
+        requestAnimationFrame(function(){
+          slot.style.transition="height .5s "+EASE;
+          slot.style.height="0px";
+        });
+      }
+      setTimeout(function(){
+        slot.style.transition="";
+        if(open){ refsEl.removeAttribute("open"); slot.style.height="0px"; }
+        else { slot.style.height="auto"; }
+        busy=false; measure(); schedule();
+      }, open?520:640);
+    });
+  }
+}
+
+measure();
+buildParallax();
+addEventListener("scroll",schedule,{passive:true});
+var rz;
+addEventListener("resize",function(){
+  clearTimeout(rz);
+  rz=setTimeout(function(){ measure(); buildParallax(); schedule(); },120);
+},{passive:true});
+addEventListener("load",function(){ measure(); schedule(); });
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measure(); schedule(); });
+schedule();
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var accList = document.getElementById("acc-leistungen");
+  if(!accList) return;
+  var items = Array.prototype.slice.call(accList.querySelectorAll(".acc-item"));
+  var triggers = items.map(function(it){ return it.querySelector(".acc-trigger"); });
+
+  function closeItem(it){
+    if(!it) return;
+    it.classList.remove("open");
+    var t = it.querySelector(".acc-trigger");
+    if(t) t.setAttribute("aria-expanded","false");
+  }
+  function openItem(it){
+    if(!it) return;
+    items.forEach(function(other){ if(other!==it) closeItem(other); });
+    it.classList.add("open");
+    var t = it.querySelector(".acc-trigger");
+    if(t) t.setAttribute("aria-expanded","true");
+  }
+  function toggleItem(it){
+    if(it.classList.contains("open")) closeItem(it); else openItem(it);
+  }
+  triggers.forEach(function(trigger, idx){
+    if(!trigger) return;
+    trigger.addEventListener("click", function(){ toggleItem(items[idx]); });
+    trigger.addEventListener("keydown", function(e){
+      var next=null;
+      if(e.key==="ArrowDown"){ next=triggers[(idx+1)%triggers.length]; }
+      else if(e.key==="ArrowUp"){ next=triggers[(idx-1+triggers.length)%triggers.length]; }
+      else if(e.key==="Home"){ next=triggers[0]; }
+      else if(e.key==="End"){ next=triggers[triggers.length-1]; }
+      if(next){ e.preventDefault(); next.focus(); }
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if(reduce || !canHover) return;
+  Array.prototype.forEach.call(document.querySelectorAll(".btn.magnetic"),function(el){
+    el.addEventListener("pointermove", function(e){
+      var r = el.getBoundingClientRect();
+      var dx = (e.clientX - (r.left + r.width/2)) * 0.22;
+      var dy = (e.clientY - (r.top + r.height/2)) * 0.32;
+      dx = Math.max(-10, Math.min(10, dx));
+      dy = Math.max(-6, Math.min(6, dy));
+      el.style.transform = "translate(" + dx.toFixed(1) + "px," + dy.toFixed(1) + "px)";
+    }, {passive:true});
+    el.addEventListener("pointerleave", function(){ el.style.transform = ""; });
+  });
+})();
+</script>
+
+</body>
+</html>
